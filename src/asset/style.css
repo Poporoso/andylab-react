@@ -1,0 +1,19 @@
+.loading {
+    background-image: url('../../public/loading.svg');
+    background-position: center center;
+    transition: .3s all ease-in-out;
+    background-repeat: no-repeat;
+    background-color: #2B3134;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.loading.active {
+    visibility: visible;
+    opacity: 1;
+}
