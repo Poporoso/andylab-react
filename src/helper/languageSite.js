@@ -6,5 +6,7 @@ export const languageSite = ({pathname}) => {
     const er = /^([a-z]{2})$/;
     const pathLang = er.test(paths[1]) ? paths[1] : browserLang[0];
 
-    return ({lang: pathLang, path: paths[1]})
+    console.log(paths)
+
+    return ({lang: pathLang, path: paths[2]})
 }

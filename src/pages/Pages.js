@@ -20,7 +20,6 @@ const Pages = (props) => {
 
     useEffect(() => {
         const apiUrl = `api/${lang}/${params['*']}`
-        console.log(apiUrl)
         dispatch(
             getApiPage(apiUrl)
         )
