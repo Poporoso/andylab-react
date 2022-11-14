@@ -6,8 +6,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
 
-const Pages = () => {
+const Pages = (props) => {
+
     const params = useParams()
+
+    const { lang } = props.target
 
     const state = useSelector(state => state)
 	const dataPage = state.dataSlice.data
@@ -16,10 +19,12 @@ const Pages = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        const apiUrl = `api/${lang}/${params['*']}`
+        console.log(apiUrl)
         dispatch(
-            getApiPage(`api/it/${params['*']}`)
+            getApiPage(apiUrl)
         )
-    }, [params, dispatch])
+    }, [params, lang, dispatch])
 
     return (
         <>

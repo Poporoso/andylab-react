@@ -5,25 +5,28 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApiMenu } from '../store/menuSlice'
 
-const Menu = () => {
+const Menu = (props) => {
+
+	const lang = props.lang
 
 	const state = useSelector(state => state)
+	// const lang = state.menuSlice.lang
 	const menuList = state.menuSlice.data['menu-principale']
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(
-			getApiMenu(`api/it/components/menu/`)
+			getApiMenu(`api/${lang}/components/menu/`)
 		)
-	}, [dispatch])
+	}, [dispatch, lang])
 
 	return (
 		<React.Fragment>
-			<Link to="/">Home</Link>
+			<Link to={`${lang}/`}>Home</Link>
 			{
 				menuList && Object.entries(menuList).map((item) => {
 					return (
-						<Link params={'dvdf'} key={item[1].id} to={`${item[1].permalink}/`}>
+						<Link key={item[1].id} to={`${lang}/${item[1].permalink}/`}>
 							{item[1].nome}
 						</Link>
 					)

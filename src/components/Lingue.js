@@ -5,26 +5,28 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApiLingue } from '../store/lingueSlice'
 
-const Lingue = () => {
+const Lingue = (props) => {
+
+	const lang = props.lang
 
 	const state = useSelector(state => state)
-	const lingueList = state.menuSlice.data
+	const lingueList = state.lingueSlice.data
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(
-			getApiLingue(`api/it/components/lingue/`)
+			getApiLingue(`api/${lang}/components/lingue/`)
 		)
-	}, [dispatch])
+	}, [dispatch, lang])
 
 	return (
 		<React.Fragment>
 			<h2>Lingue presenti</h2>
 			{
-				lingueList && Object.entries(lingueList).map((item) => {
+				lingueList && lingueList.map((item) => {
 					return (
-						<Link key={item[1].id} to={`${item[1].permalink}/`}>
-							{item[1].nome}
+						<Link key={item.id_lingua} to={`${item.abbreviazione_lingua}/`} className={lang === item.abbreviazione_lingua ? 'active' : null }>
+							{item.nome_lingua}
 						</Link>
 					)
 				})

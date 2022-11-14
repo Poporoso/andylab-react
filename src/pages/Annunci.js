@@ -1,13 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { getApiPage } from "../store/dataPageSlice";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
 
-const Annunci = () => {
-    const params = useParams()
+const Annunci = (props) => {
+
+    const { lang } = props.target
 
     const state = useSelector(state => state)
 	const dataPage = state.dataSlice.data
@@ -17,14 +17,14 @@ const Annunci = () => {
 
     useEffect(() => {
         dispatch(
-            getApiPage(`api/it/${params['*']}`)
+            getApiPage(`api/${lang}/annunci/`)
         )
-    }, [params, dispatch])
+    }, [lang, dispatch])
 
     return (
         <>
             <Loading status={isLoading} />
-            <h1>Pages: {dataPage?.body?.titolo || 'Home Page'}</h1>
+            <h1>Annunci: {dataPage?.body?.titolo || 'Home Page'}</h1>
         </>
     )
 }

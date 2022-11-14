@@ -1,13 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { getApiPage } from "../store/dataPageSlice";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
 
-const Camere = () => {
-    const params = useParams();
+const Camere = (props) => {
+
+    const { lang } = props.target
 
     const state = useSelector(state => state)
 	const dataPage = state.dataSlice.data
@@ -17,14 +17,14 @@ const Camere = () => {
 
     useEffect(() => {
         dispatch(
-            getApiPage(`api/it/camere/`)
+            getApiPage(`api/${lang}/camere/`)
         )
-    }, [params, dispatch])
+    }, [dispatch, lang])
 
     return (
         <>
             <Loading status={isLoading} />
-            <h1>{dataPage?.body?.titolo || 'Home Page'}</h1>
+            <h1>Camere: {dataPage?.body?.titolo}</h1>
         </>
     )
 }
