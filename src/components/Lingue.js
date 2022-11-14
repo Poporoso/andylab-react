@@ -19,7 +19,7 @@ const Lingue = () => {
 
 	return (
 		<React.Fragment>
-			<h2>Lingue</h2>
+			<h2>Lingue presenti</h2>
 			{
 				lingueList && Object.entries(lingueList).map((item) => {
 					return (
@@ -27,7 +27,7 @@ const Lingue = () => {
 							{item[1].nome}
 						</Link>
 					)
-				})       
+				})
 			}
 		</React.Fragment>
 	)
