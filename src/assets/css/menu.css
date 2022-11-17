@@ -1,6 +1,6 @@
 .menu {
-  -webkit-transition: 0.2s all ease-in-out;
-  transition: 0.2s all ease-in-out;
+  -webkit-transition: 0.14s all ease-in-out;
+  transition: 0.14s all ease-in-out;
   border-bottom: 1px solid transparent;
   background-color: rgba(255, 255, 255, 0);
   z-index: 8;
@@ -41,8 +41,8 @@
   position: relative;
 }
 .menu nav .menu-box li a {
-  -webkit-transition: 0.2s all linear;
-  transition: 0.2s all linear;
+  -webkit-transition: 0.14s all linear;
+  transition: 0.14s all linear;
   text-transform: uppercase;
   text-decoration: none;
   color: #222A2F;
@@ -68,8 +68,8 @@
 .menu nav .menu-box ul {
   -webkit-box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.2);
           box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.2s all linear;
-  transition: 0.2s all linear;
+  -webkit-transition: 0.14s all linear;
+  transition: 0.14s all linear;
   background-color: rgba(255, 255, 255, 0.96);
   position: absolute;
   visibility: hidden;
@@ -111,8 +111,8 @@
 }
 .menu nav .menu-box label + a:after {
   border-color: #222426 transparent transparent transparent;
-  -webkit-transition: 0.2s all linear;
-  transition: 0.2s all linear;
+  -webkit-transition: 0.14s all linear;
+  transition: 0.14s all linear;
   border-width: 4px 4px 0 4px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);

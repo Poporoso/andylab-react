@@ -2,7 +2,7 @@
 @import 'mixings/mixings';
 
 .menu {
-    @include transition(.2s, all, ease-in-out);
+    @include transition(.14s, all, ease-in-out);
     border-bottom: 1px solid transparent;
     background-color: $bg-menu;
     z-index: 8;
@@ -55,7 +55,7 @@
                 position: relative;
 
                 a {
-                    @include transition(.2s, all, linear);
+                    @include transition(.14s, all, linear);
                     text-transform: uppercase;
                     text-decoration: none;
                     color: #222A2F;
@@ -93,7 +93,7 @@
 
             ul {
                 box-shadow: 2px 2px 11px rgba(0, 0, 0, .2);
-                @include transition(.2s, all, linear);
+                @include transition(.14s, all, linear);
                 background-color: rgba($bg-sub-menu, .96);
                 position: absolute;
                 visibility: hidden;
@@ -153,7 +153,7 @@
 
                 &:after {
                     border-color: #222426 transparent transparent transparent;
-                    @include transition(.2s, all, linear);
+                    @include transition(.14s, all, linear);
                     border-width: 4px 4px 0 4px;
                     @include translateY(-50%);
                     border-style: solid;
