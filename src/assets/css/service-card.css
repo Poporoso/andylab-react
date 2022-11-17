@@ -1,0 +1,24 @@
+.service-card {
+  -webkit-box-shadow: 2px 2px 24px rgba(0, 0, 0, 0.12);
+          box-shadow: 2px 2px 24px rgba(0, 0, 0, 0.12);
+  -webkit-transition: 0.68s all ease;
+  transition: 0.68s all ease;
+  background-color: white;
+  border-radius: 14px;
+  text-align: center;
+  color: #646668;
+  cursor: pointer;
+  padding: 28px;
+}
+.service-card:hover {
+  -webkit-transform: 0;
+          transform: 0;
+  background-color: hotpink;
+  color: white;
+}
+.service-card__icon {
+  display: block;
+}
+.service-card__icon .icon {
+  font-size: 48px;
+}/*# sourceMappingURL=service-card.css.map */
