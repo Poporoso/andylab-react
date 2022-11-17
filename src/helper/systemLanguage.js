@@ -1,4 +1,4 @@
-export const languageSite = ({pathname}) => {
+export const systemLanguage = ({pathname}) => {
 
     /** Gestione lingua */
     const paths = pathname.split('/');
@@ -6,7 +6,7 @@ export const languageSite = ({pathname}) => {
     const er = /^([a-z]{2})$/;
     const pathLang = er.test(paths[1]) ? paths[1] : browserLang[0];
 
-    console.log(paths)
-
-    return ({lang: pathLang, path: paths[2]})
+    return (
+        {lang: pathLang, path: paths[2]}
+    )
 }

@@ -30,5 +30,4 @@ const getDataPage = createSlice({
     }
 })
 
-export const { getData } = getDataPage.actions
 export default getDataPage.reducer

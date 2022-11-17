@@ -1,34 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
-export const getApiMenu = createAsyncThunk('getApiMenu', async (endpoint) => {
+export const getApiInfo = createAsyncThunk('getApiInfo', async (endpoint) => {
     const { data } = await axios.get(`${process.env.REACT_APP_URL_DOMAIN}/${endpoint}`)
     return data.resource
 })
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     data: []
 }
 
-const getMenuSlice = createSlice({
-    name: 'getMenuSlice',
+const getInfoPage = createSlice({
+    name: 'getDataInfo',
     initialState,
     reducers: {}, 
     extraReducers: (builder) => {
         builder
-        .addCase(getApiMenu.pending, (state) => {
+        .addCase(getApiInfo.pending, (state) => {
             state.isLoading = true
         })
-        .addCase(getApiMenu.rejected, (state) => {
+        .addCase(getApiInfo.rejected, (state) => {
             state.isLoading = false
         })
-        .addCase(getApiMenu.fulfilled, (state, action) => {
+        .addCase(getApiInfo.fulfilled, (state, action) => {
             state.data = action.payload
             state.isLoading = false
         })
     }
 })
 
-export const { getMenu } = getMenuSlice.actions
-export default getMenuSlice.reducer
+export default getInfoPage.reducer

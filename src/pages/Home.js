@@ -1,33 +1,41 @@
-import React from 'react'
-import { getApiPage } from "../store/dataPageSlice";
+import React, { useState } from 'react'
+import API from '../store/apiData'
 
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Container, Row, Col } from "reactstrap";
 import Loading from '../components/Loading';
+import CarouselBlock from '../components/CarouselBlock';
+import BookingForm from '../components/BookingForm';
+import BlockBlog from '../components/BlockBlog';
 
-const Home = (props) => {
+const Home = ({lang}) => {
 
-    const { lang } = props.target
+    const [ dataHome, setDataHome ] = useState([])
+    const [ isLoading, setIsLoading ] = useState(true)
 
-    const state = useSelector(state => state)
-	const isLoading = state.dataSlice.isLoading
-	// const dataPage = state.dataSlice.data
-
-    const dispatch = useDispatch()
+	const dataSlider = dataHome.resource?.slider.data
+	const dataBlog = dataHome.resource?.news.data['last-post']
 
     useEffect(() => {
-        if(lang) {
-            dispatch(
-                getApiPage(`api/${lang}/home`)
-            )
-        }
-    }, [lang, dispatch])
+        API.get(`${lang}/`).then(response => {
+            setDataHome(response.data)
+            setIsLoading(false)
+        })
+    }, [lang])
 
     return (
-        <>
+        <React.Fragment>
             <Loading status={isLoading} />
-            <h1>Home page</h1>
-        </>
+            { dataSlider && <CarouselBlock slider={dataSlider} />}
+            <BookingForm />
+            <Container>
+                <Row>
+                    <Col>
+                        { dataBlog && <BlockBlog data={dataBlog} /> }
+                    </Col>
+                </Row>
+            </Container>
+        </React.Fragment>
     )
 }
 

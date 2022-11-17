@@ -1,36 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
+} from 'reactstrap';
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getApiLingue } from '../store/lingueSlice'
+const Lingue = ({ lang, data }) => {
 
-const Lingue = (props) => {
-
-	const lang = props.lang
-
-	const state = useSelector(state => state)
-	const lingueList = state.lingueSlice.data
-	const dispatch = useDispatch()
-
-	useEffect(() => {
-		dispatch(
-			getApiLingue(`api/${lang}/components/lingue/`)
-		)
-	}, [dispatch, lang])
+	const lingueList = data
 
 	return (
 		<React.Fragment>
-			<h2>Lingue presenti</h2>
-			{
-				lingueList && lingueList.map((item) => {
-					return (
-						<Link key={item.id_lingua} to={`${item.abbreviazione_lingua}/`} className={lang === item.abbreviazione_lingua ? 'active' : null }>
-							{item.nome_lingua}
-						</Link>
-					)
-				})
-			}
+			<Dropdown variant="secondary">
+				<DropdownToggle caret size="sm">
+					{lang}
+				</DropdownToggle>
+				<DropdownMenu>
+					{
+						lingueList && lingueList.map((item) => {
+							return (
+								<DropdownItem key={item.id_lingua}>
+									<Link to={`${item.abbreviazione_lingua}/`}>{item.nome_lingua}</Link>
+								</DropdownItem>
+							)
+						})
+					}
+				</DropdownMenu>
+			</Dropdown>
 		</React.Fragment>
 	)
 }

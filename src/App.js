@@ -1,50 +1,62 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { getApiInfo } from './store/dataInfoSlice';
 
 /** Components */
-import { languageSite } from './helper/languageSite';
-import Menu from "./components/Menu"
-import Lingue from './components/Lingue';
+import { systemLanguage } from './helper/systemLanguage';
+import NavbarBlock from "./components/NavbarBlock"
 
 /** Pages */
 import Home from "./pages/Home"
 import Pages from "./pages/Pages"
 import Camere from "./pages/Camere"
+
 import Blog from "./pages/Blog"
+import BlogArticle from './pages/BlogArticle';
+
 import Annunci from "./pages/Annunci"
 import Eventi from "./pages/Eventi"
 import Servizi from "./pages/Servizi"
 import Offerte from "./pages/Offerte"
 import Catalogo from "./pages/Catalogo"
 
-import './asset/style.css'
+import './assets/css/style.css'
 
 const App = () => {
 
+	const dispatch = useDispatch()
+	const store = useSelector((state) => state)
+	const data = store.infoSlice.data
+
 	/** Gestione lingua */
 	const location = useLocation();
-	const target = languageSite(location)
+	const target = systemLanguage(location)
+	const lang = target.lang;
+
+	useMemo(() => {
+		dispatch(
+			getApiInfo(`${lang}/components/all/`)
+		)
+	}, [dispatch, lang])
 
     return (
 		<>
-            <Menu lang={target.lang} />
-			<Lingue lang={target.lang} />
+            { data && <NavbarBlock data={data} lang={lang} />}
 			<Routes>
-				<Route 
-					path={`${target.lang}/`} 
-					element={
-						<Home target={target} />
-					} 
-				/>
-				<Route path={`${target.lang}/blog/`} element={<Blog target={target} />} />
-				<Route path={`${target.lang}/camere/`} element={<Camere target={target} />} />
-				<Route path={`${target.lang}/annunci/`} element={<Annunci target={target} />} />
-				<Route path={`${target.lang}/eventi/`} element={<Eventi target={target} />} />
-				<Route path={`${target.lang}/offerte/`} element={<Offerte target={target} />} />
-				<Route path={`${target.lang}/servizi/`} element={<Servizi target={target} />} />
-				<Route path={`${target.lang}/catalogo/`} element={<Catalogo target={target} />} />
-				<Route path={`${target.lang}/*`} element={<Pages target={target} />} />
-				<Route path="*" element={ <Navigate to={`${target.lang}/`} /> } />
+				<Route path={`${lang}/`} element={<Home lang={lang} />} />
+
+				<Route path={`${lang}/blog/`} element={<Blog lang={lang} />} />
+				<Route path={`${lang}/blog/:data/:title-:id/`} element={<BlogArticle />} />
+
+				<Route path={`${lang}/camere/`} 	element={<Camere lang={lang} />} />
+				<Route path={`${lang}/annunci/`} 	element={<Annunci lang={lang} />} />
+				<Route path={`${lang}/eventi/`} 	element={<Eventi lang={lang} />} />
+				<Route path={`${lang}/offerte/`}	element={<Offerte lang={lang} />} />
+				<Route path={`${lang}/servizi/`}	element={<Servizi lang={lang} />} />
+				<Route path={`${lang}/catalogo/`} 	element={<Catalogo lang={lang} />} />
+				<Route path={`${lang}/*`} 			element={<Pages lang={lang} />} />
+				<Route path="*" 					element={<Navigate to={`${lang}/`} />} />
 			</Routes>
 		</>
     );

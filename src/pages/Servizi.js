@@ -1,30 +1,27 @@
-import React from 'react'
-import { getApiPage } from "../store/dataPageSlice";
+import React, {useState} from 'react'
+import API from '../store/apiData'
 
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Loading from '../components/Loading';
 
-const Servizi = (props) => {
+const Servizi = ({lang}) => {
 
-    const { lang } = props.target
-
-    const state = useSelector(state => state)
-	const dataPage = state.dataSlice.data
-	const isLoading = state.dataSlice.isLoading
-
-    const dispatch = useDispatch()
+    const [ apiDataPage, setApiDataPage ] = useState({})
+    const [ isLoading, setIsLoading ] = useState(true)
 
     useEffect(() => {
-        dispatch(
-            getApiPage(`api/${lang}/servizi/`)
-        )
-    }, [lang, dispatch])
+        setIsLoading(true)
+        const link = `/${lang}/servizi/`
+        API.get(link).then((response) => {
+            setApiDataPage(response.data.resource)
+            setIsLoading(false)
+        })
+    }, [lang])
 
     return (
         <>
             <Loading status={isLoading} />
-            <h1>Servizi: {dataPage?.body?.titolo || 'Home Page'}</h1>
+            <h1>Servizi: {apiDataPage?.body?.titolo}</h1>
         </>
     )
 }

@@ -1,35 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getApiPage } from "../store/dataPageSlice";
+import API from '../store/apiData'
 
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from '../components/Loading';
+import Loading from '../components/Loading'
+import { Container, Row, Col } from 'reactstrap'
+import Articolo from '../components/Articolo'
+import HeaderPage from '../components/HeaderPage'
 
-const Pages = (props) => {
+const Pages = ({lang}) => {
 
     const params = useParams()
+    const stringPage = params['*'];
 
-    const { lang } = props.target
+    const [ apiDataPage, setApiDataPage ] = useState({})
+    const [ isLoading, setIsLoading ] = useState(true)
 
-    const state = useSelector(state => state)
-	const dataPage = state.dataSlice.data
-	const isLoading = state.dataSlice.isLoading
-
-    const dispatch = useDispatch()
+	const dataPage = apiDataPage.body
+	const dataTemplate = apiDataPage.template
 
     useEffect(() => {
-        const apiUrl = `api/${lang}/${params['*']}`
-        dispatch(
-            getApiPage(apiUrl)
-        )
-    }, [params, lang, dispatch])
+        setIsLoading(true)
+        const link = `/${lang}/${stringPage}`
+        API.get(link).then((response) => {
+            setApiDataPage(response.data.resource)
+            setIsLoading(false)
+        })
+    }, [lang, stringPage])
 
     return (
-        <>
+        <React.Fragment>
             <Loading status={isLoading} />
-            <h1>Pages: {dataPage?.body?.titolo || 'Home Page'}</h1>
-        </>
+            <HeaderPage data={dataTemplate} /> 
+            <Container>
+                <Row>
+                    <Col>
+                        { dataPage && <Articolo data={dataPage} /> }
+                    </Col>
+                    <Col md={4}>
+                        ***
+                    </Col>
+                </Row>
+            </Container>
+        </React.Fragment>
+
     )
 }
 

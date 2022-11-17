@@ -1,0 +1,80 @@
+// main: ../*.sass
+
+$success-color: #16D39A;
+$secondary-color: #424E58;
+$danger-color: #FF7588;
+$warning-color: #FFCC55;
+$info-color: #0BCED1;
+$light-color: #FFFFFF;
+$dark-color: #010203;
+
+$body-text: #212529;
+$body-bg: #FFFFFF;
+
+$primary-color: #FD4A36;
+$primary-color-100: #FF5C4A;
+$primary-color-200: #FF3720;
+
+$base-color: #12171B;
+$base-color-100: #2E373F;
+$base-color-200: #484E53;
+$base-color-300: #6F7C86;
+$base-color-400: #7C8994;
+$base-color-500: #8D9AA5;
+$base-color-600: #A1ACB6;
+$base-color-700: #B0BAC4;
+$base-color-800: #C8CFD6;
+$base-color-900: #E0E4E7;
+
+
+$primary-color-section: #F7F8F9;
+$primary-color-section-light: #F9FBFC;
+$primary-color-section-dark: #EBEFF3;
+
+$form-border-color: #E2E5EC;
+$form-bg-color: #FDFEFF;
+$form-border-color-focus: $primary-color;
+$form-bg-color-focus: #FCFDFE;
+$form-shadow: 0 0 0 .25rem rgba($primary-color, .0);
+
+$corner-color: #C8CFD6;
+
+// Menu BG
+$bg-menu: rgba(#FFFFFF, .0);
+$bg-menu-scroll: rgba(#FFFFFF, .99);
+
+// Submenu BG
+$bg-sub-menu: rgba(#FFFFFF, .99);
+$border-menu-scroll: #E9E9E9;
+
+// Menu Responsive
+$bg-menu-responsive: #FFFFFF;
+$label-bg-color: #0A0E12;
+$label-color: #FFFFFF;
+$label-line: #DFE2E7;
+
+$border-none: 0;
+
+// $border-light: .28rem;
+// $border-medium: .48rem;
+// $border-strong: .68rem;
+// $border-max: 1rem;
+// $border-full: 10rem;
+
+$border-light: $border-none;
+$border-medium: $border-none;
+$border-strong: $border-none;
+$border-max: $border-none;
+$border-full: $border-none;
+
+$border-left-ligth: $border-light $border-none $border-none $border-light;
+$border-left-medium: $border-medium $border-none $border-none $border-medium;
+$border-left-strong: $border-strong $border-none $border-none $border-strong;
+$border-left-max: $border-max $border-none $border-none $border-max;
+$border-left-full: $border-full $border-none $border-none $border-full;
+
+$border-right-ligth: $border-none $border-light $border-light $border-none;
+$border-right-medium: $border-none $border-medium $border-medium $border-none;
+$border-right-strong: $border-none $border-strong $border-strong $border-none;
+$border-right-max: $border-none $border-max $border-max $border-none;
+$border-right-full: $border-none $border-full $border-full $border-none;
