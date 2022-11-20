@@ -21,7 +21,7 @@ const CarouselBlock = ({slider}) => {
                 Object.entries(slider).map((item, index) => {
                     return (
                         <SwiperSlide key={index}>
-                            <img style={{width:'100%'}} src={`${process.env.REACT_APP_URL_UPLOAD}/${item[1].url_immagine}`} alt="Img1" />
+                            <img style={{width:'100%'}} src={`${process.env.REACT_APP_UPLOADS_URL}/${item[1].url_immagine}`} alt="Img1" />
                         </SwiperSlide>
                     )
                 })

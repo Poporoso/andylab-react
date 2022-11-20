@@ -6,7 +6,7 @@ import Menu from './Menu'
 const NavbarBlock = ({ lang, data }) => {
 
     return (
-        <Container >
+        <Container>
             <Row>
                 <Col>
 			        AndyLab

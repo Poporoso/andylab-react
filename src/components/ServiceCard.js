@@ -9,9 +9,9 @@ const ServiceCard = ({ data, icon }) => {
 
     return (
         <div className='service-card'>
-            <icon className="service-card__icon">
+            <span className="service-card__icon">
                 <i className={`icon ${icon}`}></i>
-            </icon>
+            </span>
             <h2 className="service-card__title">{titolo}</h2>
             <div className="service-card__text" dangerouslySetInnerHTML={renderText(testo.substr(0,88))}></div>
         </div>

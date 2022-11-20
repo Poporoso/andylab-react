@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 export const getApiPage = createAsyncThunk('getApiPage', async (endpoint) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_URL_DOMAIN}/${endpoint}`)
+    const { data } = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/${endpoint}`)
     return data.resource
 })
 

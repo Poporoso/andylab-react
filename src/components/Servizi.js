@@ -14,7 +14,7 @@ const Servizi = ({data}) => {
                     servizi.map((item, index) => {
                         return (
                             <Col key={index}>
-                                <ServiceCard icon={icone[index+1]} data={item} />
+                                <ServiceCard icon={icone[(index+1)]} data={item} />
                             </Col>
                         )
                     }) 

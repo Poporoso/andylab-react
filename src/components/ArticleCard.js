@@ -15,7 +15,7 @@ const ArticleCard = ({data}) => {
         <div className="blog-item padd-15" id={`blog-n-${id_news}`}>
             <div className="blog-item-inner shadow-dark">
                 <div className="blog-img">
-                    { img_anteprima && <img src={`${process.env.REACT_APP_URL_UPLOAD}/${img_anteprima}`} alt={titolo} /> }
+                    { img_anteprima && <img src={`${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima}`} alt={titolo} /> }
                     <div className="blog-date">
                         {convertData(inizio_pubblicazione, 'dd ms aaaa')}
                     </div>

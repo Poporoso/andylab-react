@@ -26,7 +26,7 @@ const About = ({ data }) => {
                         <span>Vai a leggere</span>
                     </Link>
                 </Col>
-                <Col style={{ backgroundPosition: 'center', backgroundSize: 'cover', backgroundImage: `url(${process.env.REACT_APP_URL_UPLOAD}/${img_anteprima})` }}>
+                <Col style={{ backgroundPosition: 'center', backgroundSize: 'cover', backgroundImage: `url(${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima})` }}>
                     
                 </Col>
             </Row>
