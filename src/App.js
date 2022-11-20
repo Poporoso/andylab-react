@@ -20,6 +20,7 @@ import Eventi from "./pages/Eventi"
 import Servizi from "./pages/Servizi"
 import Offerte from "./pages/Offerte"
 import Catalogo from "./pages/Catalogo"
+import Booking from "./pages/Booking"
 
 import './assets/css/style.css'
 
@@ -49,6 +50,7 @@ const App = () => {
 				<Route path={`${lang}/blog/`} element={<Blog lang={lang} />} />
 				<Route path={`${lang}/blog/:data/:title-:id/`} element={<BlogArticle />} />
 
+				<Route path={`${lang}/booking/`} 	element={<Booking />} />
 				<Route path={`${lang}/camere/`} 	element={<Camere lang={lang} />} />
 				<Route path={`${lang}/annunci/`} 	element={<Annunci lang={lang} />} />
 				<Route path={`${lang}/eventi/`} 	element={<Eventi lang={lang} />} />

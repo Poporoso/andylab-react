@@ -1,0 +1,90 @@
+.gallery-image {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 22px;
+}
+.gallery-image .img-box {
+  background-color: white;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: calc(25% - 17px);
+  display: inline-block;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  height: 250px;
+}
+.gallery-image .img-box:hover {
+  cursor: pointer;
+}
+.gallery-image .img-box:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.gallery-image .img-box:hover .transparent-box {
+  background-color: rgba(0, 0, 0, 0.68);
+}
+.gallery-image .img-box:hover .caption {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  opacity: 1;
+}
+.gallery-image .img-box .transparent-box {
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  height: 250px;
+  width: 350px;
+  top: 0;
+  left: 0;
+}
+.gallery-image .img-box .transparent-box .caption {
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  position: absolute;
+  bottom: 4px;
+  left: 20px;
+  opacity: 0;
+}
+.gallery-image .img-box .transparent-box .caption h2 {
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+}
+.gallery-image .img-box .transparent-box .caption > p:nth-child(2) {
+  font-weight: 300;
+  font-size: 17px;
+}
+.gallery-image .img-box img {
+  -o-object-position: center;
+     object-position: center;
+  -webkit-transition: -webkit-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
+.gallery-image .opacity-low {
+  opacity: 0.5;
+}/*# sourceMappingURL=gallery-block.css.map */

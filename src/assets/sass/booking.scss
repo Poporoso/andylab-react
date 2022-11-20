@@ -1,0 +1,71 @@
+.booking {
+
+    &__room-row {
+        margin-bottom: 14px;
+
+        h6 {
+            color: #2684FF;
+        }
+    }
+
+    &__room-col {
+        box-shadow: 2px 2px 24px rgba(0, 0, 0, .08);
+        justify-content: space-around;
+        border-radius: 12px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        display: flex;
+
+        .immagine {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 30%;
+        }
+
+        .tariffe {
+            padding: 12px 16px;
+            font-size: 14px;
+            width: 70%;
+
+            &__title {
+                background-color: #2684FF;
+                border-radius: 6px;
+                margin-bottom: 8px;
+                color: white;
+                padding: 6px;
+            }
+
+            &__row {
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                display: flex;
+
+                &-prezzo {
+                    width: 22%;
+                }
+
+                &-descrizione {
+                    width: 56%;
+                }
+
+                &-seleziona {
+                    width: 22%;
+
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .tariffa-container {
+            select {
+                min-width: 80px;
+                margin-top: 6px;
+            }
+        }  
+    }
+}

@@ -7,7 +7,7 @@ const Articolo = (props) => {
 
     return (
         <article>
-            { img_anteprima && <img src={`${process.env.REACT_APP_URL_UPLOAD}/${img_anteprima}`} alt={titolo} /> }
+            { img_anteprima && <img src={`${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima}`} alt={titolo} /> }
             <h1>{titolo}</h1>
             <p dangerouslySetInnerHTML={renderText(testo)}></p>        
         </article>
