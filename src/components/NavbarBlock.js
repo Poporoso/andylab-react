@@ -3,13 +3,15 @@ import {Container, Row, Col} from 'reactstrap';
 import Lingue from './Lingue';
 import Menu from './Menu'
 
+import logo from '../assets/images/logo.svg'
+
 const NavbarBlock = ({ lang, data }) => {
 
     return (
         <Container>
             <Row>
                 <Col>
-			        AndyLab
+			        <img src={logo} alt="AndyLab" style={{height:'56px'}} />
                 </Col>
                 <Col lg={8}>
                     <div>
