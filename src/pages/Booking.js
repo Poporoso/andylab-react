@@ -15,10 +15,8 @@ import Footer from '../components/Footer';
 const Booking = () => {
 
     const [ isLoading, setIsLoading ] = useState(true)
-    const state = useSelector(state => state)
-    const load = state.dataBooking.isLoading
-    const rooms = state.dataBooking.data.data_book?.day_booking
-    const booking = state.dataBooking.data.data_book?.info
+    const store = useSelector(state => state.dataBooking)
+    const load = store.isLoading
 
     useEffect(() => {
         !load && setIsLoading(false)
@@ -31,10 +29,10 @@ const Booking = () => {
             <Container className='booking'>
                 <Row>
                     <Col lg={8}>
-                        { rooms && <BookingRoomList booking={booking} rooms={rooms} /> }
+                        <BookingRoomList /> 
                     </Col>
                     <Col>
-                        { booking && <BookingRiepilogo booking={booking}  /> }
+                        <BookingRiepilogo /> 
                     </Col>
                 </Row>
             </Container>    

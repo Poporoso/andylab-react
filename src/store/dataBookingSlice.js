@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
-export const getApiBooking = createAsyncThunk('getApiBooking', async ({url, dataJson}) => {
+export const nextStep = createAsyncThunk('nextStep', async ({url, dataJson}) => {
     const { data } = await axios.post(`${process.env.REACT_APP_DOMAIN_URL}/${url}`, dataJson, 
     { 
         headers: { 
@@ -22,7 +22,7 @@ const getDataBooking = createSlice({
     initialState,
     reducers: {
         eliminaTariffaSelezionata(state, actions) {
-            delete state.soggiorno.tariffe[actions.payload]
+            delete state.soggiorno.tariffe[actions.payload[0]][actions.payload[1]]
         },
         selezionaSoggiorno(state, actions) {
             state.soggiorno = actions.payload
@@ -30,13 +30,13 @@ const getDataBooking = createSlice({
     }, 
     extraReducers: (builder) => {
         builder
-        .addCase(getApiBooking.pending, (state) => {
+        .addCase(nextStep.pending, (state) => {
             state.isLoading = true
         })
-        .addCase(getApiBooking.rejected, (state) => {
+        .addCase(nextStep.rejected, (state) => {
             state.isLoading = false
         })
-        .addCase(getApiBooking.fulfilled, (state, action) => {
+        .addCase(nextStep.fulfilled, (state, action) => {
             state.data = action.payload.resource
             state.isLoading = false
         })
