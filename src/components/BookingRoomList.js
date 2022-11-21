@@ -5,21 +5,24 @@ import { renderText } from '../helper/renderText';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 
-const BookingRoomList = ({booking, rooms}) => {
+const BookingRoomList = () => {
 
     const dispatch = useDispatch()
     const selectRefs= useRef([]);
 
     const [ camereDisponibili, setCamereDisponibili ] = useState({})
-    // const [ camereSelezionate, setCamereSelezionate ] = useState({}) 
 
-    const bs = useSelector(state => state);
-    const soggiorno = bs.dataBooking.soggiorno
+    const store = useSelector(state => state.dataBooking);
 
-    const checkButton = () => {
-        console.log('Tariffe: ', soggiorno)
-        // console.log(soggiorno)
-    }
+    // console.log(store)
+
+    const soggiorno = store.soggiorno
+    const rooms = store.data.data_book?.day_booking
+    const booking = store.data.data_book?.info
+
+    // const checkButton = () => {
+    //     console.log(soggiorno)
+    // }
 
     const checkDisponibilita = (e) => {
 
@@ -29,7 +32,6 @@ const BookingRoomList = ({booking, rooms}) => {
 
         // Estraggo le camere selezionate di questo tipo
         let camereRestanti = e.max
-        //console.log('Camere disponibili iniziali', camereRestanti)
 
         listaTariffe && Object.entries(listaTariffe).map((item) => {
 
@@ -44,17 +46,10 @@ const BookingRoomList = ({booking, rooms}) => {
                              ? e.value 
                              : numFromSelect ? numFromSelect : 0
 
-            // console.log('Sono una lista di tariffe: ', item[1])
-            //console.log('Nella select sono impostate: ', valoreSelect)
-            return camereRestanti -= valoreSelect
-
-            // console.log(`UseRef tar-${key}: `, valoreSelect)
             // Scalo la quantita di camere dal totale
-            // return camereRestanti -= valoreSelect
+            return camereRestanti -= valoreSelect
         })
 
-        console.log('Camere restanti: ', camereRestanti)
-
         listaTariffe && Object.entries(listaTariffe).map((item) => {
 
             // Ottengo il nome della tariffa
@@ -62,126 +57,33 @@ const BookingRoomList = ({booking, rooms}) => {
 
             // Ricavo la selezione attuale della select
             const numFromSelect = selectRefs.current[`${nomeTipo}-tar-${key}`].state.selectValue[0]?.value
-            
-            console.log('NumForSelect: ', numFromSelect)
 
             // Ottengo il valore in base alla tariffa attuale/e delle altre della tipologia
             let valoreSelect = key === e.tariffa 
                              ? e.value 
                              : numFromSelect ? numFromSelect : 0
 
-/*
-            let x = 0;
-            item[1].map((itemTar, index) => {
-                if(e.tariffa === itemTar.tariffa)
-                {
-                    if( (index) > valoreSelect ) {
-                        if(x < camereRestanti) {
-                            x++
-                            console.log('ItemTar 1', itemTar)
-                            return (
-                                itemTar.isdisabled = false
-                            )
-                        }
-                        else{
-                            return (
-                                itemTar.isdisabled = true
-                            )
-                        }
-                    }
-                    return null
-                }
-                return null
-            })
-
-            let y = 0;
-            item[1].map((itemTar, index) => {
-                if(e.tariffa !== itemTar.tariffa)
-                {
-                    if( (index) > valoreSelect ) {
-                        if(y < camereRestanti) {
-                            y++
-                            console.log('ItemTar 2', itemTar)
-                            return (
-                                itemTar.isdisabled = false
-                            )
-                        }
-                        else{
-                            return (
-                                itemTar.isdisabled = true
-                            )
-                        }
-                    }
-                    return null
-                }
-                return null
-            })*/
-
             let y = 0;
             item[1].map((itemTar, index) => {
 
-                    if( (index) > valoreSelect ) {
-                        if(y < camereRestanti) {
-                            y++
-                            console.log('ItemTar 2', itemTar)
-                            return (
-                                itemTar.isdisabled = false
-                            )
-                        }
-                        else{
-                            return (
-                                itemTar.isdisabled = true
-                            )
-                        }
+                if( (index) > valoreSelect ) {
+                    if(y < camereRestanti) {
+                        y++
+                        return (
+                            itemTar.isdisabled = false
+                        )
                     }
-                    return null
+                    else{
+                        return (
+                            itemTar.isdisabled = true
+                        )
+                    }
+                }
+                return null
             })
 
             return null
-
-            /*
-            item[1].map((itemTar, index) => {
-                let key = Number(item[0])
-                const numFromSelect = selectRefs.current[`${nomeTipo}-tar-${key}`].state.selectValue[0]?.value
-
-                if( index > numFromSelect ) {
-                    return (
-                        itemTar.isdisabled = true
-                    )
-                }
-                return (
-                    itemTar.isdisabled = false
-                )
-            })  */
         })
-
-
-
-
-            // item[1].map((itemTar, index) => {
-            //     if( item[0] !== e.tariffa ) {
-            //         return (
-            //             itemTar.isdisabled = (index) > camereRestanti ? true : false
-            //         )
-            //     }
-            //     return null
-            // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // console.log('Selezione: ', e)
-        // console.log('Soggiorno: ', soggiorno.tariffe[nomeTipo])
-        //let camereTotaliSelezionate = 0;
 
         if(soggiorno.tariffe[nomeTipo]) {
 
@@ -189,93 +91,18 @@ const BookingRoomList = ({booking, rooms}) => {
             //camereTotaliSelezionate += e.value
         }
 
-
-
-
-        // console.log('Camere selezionate: ', camereTotaliSelezionate)
-
-/*
-        // Preparo la gestione delle options della select coinvolta
-        const targetList = camereDisponibili[e.tipo].tariffe[e.tariffa] // => lista select
-        // const valorePrecedente = soggiorno.tariffe[nomeTipo]?.select // => Numero precedentemente selezionato
-        
-
-
-        console.log('soggiorno: ', soggiorno)
-
-        */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-        targetList.map((item, index) => {
-            return (
-                item.isdisabled = index > (e.max) ? true : false
-            )
-        })
-        */
-
-        // Salvo selezione tariffa
-        // setTariffeSelezionate([...tariffaSelezionate, ])
-
-        // Recupero le selezioni del tipo
-
-   /*
-        const targetList = camereDisponibili[e.tipo].tariffe[e.tariffa]
-        const nuovoMax = e.max - e.value
-        // camereDisponibili[e.tipo].selezione = e.value
-
-        targetList.map((item, index) => {
-            return (
-                item.isdisabled = index > (e.max) ? true : false
-            )
-        })
-        // camereDisponibili[e.tipo].max = camereDisponibili[e.tipo].max - e.value
-
-        // console.log('Camere: ', camereDisponibili)
-        console.log('Diponibili: ', e.max - e.value)
-        Object.entries(camereDisponibili[e.tipo].tariffe).map((item) => {
-            if(item[0] !== e.tariffa) {
-
-                item[1].map((item_s, index_s) => {
-
-                    return (
-                        item_s.isdisabled = index_s > camereDisponibili[e.tipo].max ? true : false
-                    )
-                })
-            }
-            return (
-                false
-            )
-        })
-        */
-
         let newObj = {
             tipo: e.tipo, 
             tariffa: e.tariffa,
-            select: e.value,
-            prezzo: e.prezzo
+            prezzo: e.prezzo,
+            quantita: e.value,
+            nomeTipologia: e.nomeTipologia,
+            nomeTariffa: e.nomeTariffa,
         }
 
         if(e.prezzo === 0) {
             dispatch(
-                eliminaTariffaSelezionata(nomeTipo)
+                eliminaTariffaSelezionata([`tipo-${e.tipo}`, `tar-${e.tariffa}`])
             )
             return
         }
@@ -294,7 +121,7 @@ const BookingRoomList = ({booking, rooms}) => {
         )
     }
 
-    const popolaSelect = ({unita, prezzo, tipo, tariffa}) => {
+    const popolaSelect = ({unita, prezzo, tipo, nomeTipologia, nomeTariffa, tariffa}) => {
 
         const tar = []
         for(let i = 0; i <= unita; i++) 
@@ -308,6 +135,8 @@ const BookingRoomList = ({booking, rooms}) => {
                 tipo: tipo, 
                 tariffa: tariffa, 
                 max: unita, 
+                nomeTipologia: nomeTipologia,
+                nomeTariffa: nomeTariffa,
                 prezzo: prezzoFinale 
             }
             tar.push(obj);
@@ -334,8 +163,7 @@ const BookingRoomList = ({booking, rooms}) => {
 
     useEffect(() => {
 
-        rooms.map((item) => {
-
+        rooms && rooms.map((item) => {
             return (
                 Object.entries(item.tariffe).map((tar) => {
                     return (
@@ -343,6 +171,8 @@ const BookingRoomList = ({booking, rooms}) => {
                             unita: item.unita, 
                             prezzo: tar[1].prezzo, 
                             tipo: item.id_tipologia,
+                            nomeTipologia: item.nome_tipologia,
+                            nomeTariffa: tar[1].nome_tariffa,
                             tariffa: tar[1].id_tariffa
                         }) 
                     )
@@ -350,7 +180,7 @@ const BookingRoomList = ({booking, rooms}) => {
             )
         })
 
-        dispatch(
+        booking && dispatch(
             selezionaSoggiorno({
                 checkin: booking.checkin_it,
                 checkout: booking.checkout_it,
@@ -361,14 +191,14 @@ const BookingRoomList = ({booking, rooms}) => {
             })
         )
 
-    }, [rooms, dispatch])
+    }, [rooms, booking, dispatch])
 
 
     return (
         <section className="booking__room-list">
             <h2>Camere disponibili</h2>
             {
-                rooms.map((item, index) => {
+                rooms && rooms.map((item, index) => {
                     var immagine = `${process.env.REACT_APP_UPLOADS_URL}${item.immagine}`
 
                     return (
