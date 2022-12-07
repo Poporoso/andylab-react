@@ -26,42 +26,45 @@ import './assets/css/style.css'
 
 const App = () => {
 
-	const dispatch = useDispatch()
-	const store = useSelector((state) => state)
-	const data = store.infoSlice.data
-
 	/** Gestione lingua */
 	const location = useLocation();
 	const target = systemLanguage(location)
 	const lang = target.lang;
 
+	const dispatch = useDispatch()
+	const store = useSelector((state) => state)
+	const data = store.infoSlice.data
+
 	useMemo(() => {
 		dispatch(
-			getApiInfo(`${lang}/components/all/`)
+			getApiInfo({
+				url: `${lang}/components/all/`,
+				lang: lang
+			})
 		)
 	}, [dispatch, lang])
 
-    return (
+	return (
 		<>
-            { data && <NavbarBlock data={data} lang={lang} />}
+			{data && <NavbarBlock data={data} lang={lang} />}
 			<Routes>
-				<Route path={`${lang}/`} element={<Home lang={lang} />} />
+				<Route path={`${lang}/`} element={<Home />} />
+				<Route path={`${lang}/booking/*`} element={<Booking />} />
 
 				<Route path={`${lang}/blog/`} element={<Blog lang={lang} />} />
 				<Route path={`${lang}/blog/:data/:title-:id/`} element={<BlogArticle />} />
 
-				<Route path={`${lang}/booking/`} 	element={<Booking />} />
-				<Route path={`${lang}/camere/`} 	element={<Camere lang={lang} />} />
-				<Route path={`${lang}/annunci/`} 	element={<Annunci lang={lang} />} />
-				<Route path={`${lang}/eventi/`} 	element={<Eventi lang={lang} />} />
-				<Route path={`${lang}/offerte/`}	element={<Offerte lang={lang} />} />
-				<Route path={`${lang}/servizi/`}	element={<Servizi lang={lang} />} />
-				<Route path={`${lang}/catalogo/`} 	element={<Catalogo lang={lang} />} />
-				<Route path={`${lang}/*`} 			element={<Pages lang={lang} />} />
-				<Route path="*" 					element={<Navigate to={`${lang}/`} />} />
+				<Route path={`${lang}/camere/`} element={<Camere lang={lang} />} />
+				<Route path={`${lang}/annunci/`} element={<Annunci lang={lang} />} />
+				<Route path={`${lang}/eventi/`} element={<Eventi lang={lang} />} />
+				<Route path={`${lang}/offerte/`} element={<Offerte lang={lang} />} />
+				<Route path={`${lang}/servizi/`} element={<Servizi lang={lang} />} />
+				<Route path={`${lang}/catalogo/`} element={<Catalogo lang={lang} />} />
+				<Route path={`${lang}/*`} element={<Pages lang={lang} />} />
+				<Route path="*" element={<Navigate to={`${lang}/`} />} />
 			</Routes>
 		</>
-    );
+	);
 }
 
 export default App;
