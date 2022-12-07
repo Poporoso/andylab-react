@@ -17,7 +17,7 @@ const About = ({ data }) => {
                     <h1 className="mb-4 display-4" style={{ fontWeight: 600 }}>
                         {titolo}
                     </h1>
-                    <p className="text-secondary" style={{ lineHeight: 2 }} dangerouslySetInnerHTML={renderText(testo.substr(0,480))}>
+                    <p className="text-secondary" style={{ lineHeight: 2 }} dangerouslySetInnerHTML={renderText(testo.substr(0, 480))}>
                     </p>
                     <a href="#/" style={{ color: '#9B5DE5', width: '240px' }} className="btn px-4 py-3 text-white d-flex align-items-center justify-content-between">
                         <span>Download Profile</span>
@@ -27,7 +27,7 @@ const About = ({ data }) => {
                     </Link>
                 </Col>
                 <Col style={{ backgroundPosition: 'center', backgroundSize: 'cover', backgroundImage: `url(${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima})` }}>
-                    
+
                 </Col>
             </Row>
         </Container>
