@@ -8,10 +8,10 @@ import Loading from '../components/Loading';
 import CarouselBlock from '../components/CarouselBlock';
 import BookingForm from '../components/booking/BookingForm';
 import BlockBlog from '../components/BlockBlog';
-import Footer from '../components/Footer';
 import About from '../components/About';
 import Servizi from '../components/Servizi';
 import GalleryBlock from '../components/GalleryBlock';
+import Footer from '../components/Footer';
 
 const Home = () => {
 
