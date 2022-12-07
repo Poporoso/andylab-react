@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap'
 import Articolo from '../components/Articolo.js'
 import HeaderPage from '../components/HeaderPage'
 import Loading from '../components/Loading'
+import Footer from '../components/Footer';
 
 const Pages = ({ lang }) => {
 
@@ -40,7 +41,7 @@ const Pages = ({ lang }) => {
         <>
             <Loading status={isLoading} />
             <HeaderPage data={dataTemplate} />
-            <Container>
+            <Container className='py-5'>
                 <Row>
                     <Col>
                         {dataPage && <Articolo data={dataPage} />}
@@ -50,6 +51,7 @@ const Pages = ({ lang }) => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </>
 
     )
