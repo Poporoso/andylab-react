@@ -9,6 +9,10 @@ Icon
 # testing
 /coverage
 
+# file
+.css
+.map
+
 # production
 /build
 
