@@ -1,0 +1,190 @@
+.login-box {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-height: 100vh;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.login-box__error {
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+  top: 50%;
+}
+.login-box__error:after {
+  background-color: rgba(255, 255, 255, 0.831372549);
+  position: fixed;
+  content: "";
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+.login-box__error .text {
+  background-color: #D74A51;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 28px;
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+.login-box__image {
+  width: 68%;
+}
+.login-box__image img {
+  position: fixed;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  bottom: 0;
+  top: 0;
+}
+.login-box__form {
+  background-color: rgba(248, 248, 248, 0.7882352941);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+  width: 32%;
+  z-index: 1;
+}
+.login-box__form .alert {
+  border-color: transparent;
+  padding: 10px 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 8px;
+     -moz-column-gap: 8px;
+          column-gap: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+}
+.login-box__form .alert-success {
+  background-color: #1DD796;
+}
+.login-box__form .alert-danger {
+  background-color: #D74A51;
+}
+.login-box__form .title-container {
+  margin-bottom: 28px;
+  text-align: center;
+}
+.login-box__form .title-container h3 {
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 26px;
+}
+.login-box__form label {
+  margin: 12px 0 0;
+  padding: 0;
+}
+.login-box__form button {
+  margin-top: 24px;
+}
+.login-box__social-title {
+  border-top: 1px dashed #CCC;
+  margin: 38px 0 6px;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 28px;
+}
+.login-box__socials {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+  -webkit-column-gap: 22px;
+     -moz-column-gap: 22px;
+          column-gap: 22px;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.login-box__socials li a {
+  text-decoration: none;
+  color: #424446;
+  font-size: 28px;
+}
+
+@media (max-width: 1199px) {
+  .login-box__image {
+    width: 60%;
+  }
+  .login-box__form {
+    width: 40%;
+  }
+}
+@media (max-width: 991px) {
+  .login-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .login-box__image, .login-box__form {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .login-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .login-box__image {
+    max-height: 280px;
+  }
+}/*# sourceMappingURL=accesso.css.map */

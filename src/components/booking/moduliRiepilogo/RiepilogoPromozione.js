@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'reactstrap'
-import convertData from '../../../helper/convertData'
+import { convertData } from '../../../helper/Helper'
 import { deletePromozione } from '../../../store/dataBookingSlice'
 
 const RiepilogoTariffe = () => {

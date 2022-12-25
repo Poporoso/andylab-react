@@ -1,0 +1,181 @@
+.blog {
+
+    &-article {
+
+        &__image {
+            box-shadow: 0 0 18px rgba(0, 0, 0, .18);
+            border-radius: 14px;
+            overflow: hidden;
+            height: 480px;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__title {
+            font-weight: 700;
+            font-size: 32px;
+            margin: 18px 0;
+        }
+
+        &__body {
+            line-height: 1.68;
+            font-size: 18px;
+            font-weight: 300;
+            color: #555;
+        }
+    }
+
+    &-module {
+        box-shadow: 0 0 18px rgb(0, 0, 0, .12);
+        background: #F8FAFC;
+        margin-bottom: 24px;
+        border-radius: 6px;
+        padding: 24px;
+
+        &__title {
+            margin-bottom: 20px;
+        }
+
+        &__recenti {
+            justify-content: space-between;
+            flex-direction: column;
+            row-gap: 16px;
+            display: flex;
+
+            &-item {
+                justify-content: flex-start;
+                align-items: flex-start;
+                column-gap: 16px;
+                display: flex;
+
+                .blog-image {
+                    background-color: #6255D8;
+                    border-radius: 6px;
+                    overflow: hidden;
+                    min-width: 80px;
+                    height: 80px;
+                    width: 80px;
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+
+                    h5 {
+                        transition: all .3s linear;
+                        margin-bottom: 10px;
+                        color: #646668;
+                        font-size: 16px;
+                        line-height: 1.4;
+                        font-weight: 600;
+                    }
+                }
+
+                p {
+                    font-size: 14px;
+                    line-height: 21px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &__tags {
+            flex-direction: row;
+            list-style: none;
+            flex-wrap: wrap;
+            display: flex;
+            gap: 16px;
+            padding: 0;
+            margin: 0;
+
+            li {
+
+                a {
+                    transition: all .3s ease 0s;
+                    display: inline-block;
+                    text-decoration: none;
+                    background: #6255D8;
+                    border-radius: 8px;
+                    padding: 4px 16px;
+                    font-size: 13px;
+                    line-height: 2;
+                    color: #FFF;
+                }
+            }
+        }
+
+        &__categorie {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            ul {
+                list-style: none;
+                padding: 0 0 0 14px;
+                margin: 0;
+            }
+
+            > li {
+                border-bottom: 1px dashed #F0E9FF;
+                transition: all .3s ease 0s;
+                padding: 10px 0 10px 22px;
+                position: relative;
+                line-height: 1;
+
+                a {
+                    justify-content: space-between;
+                    text-decoration: none;
+                    flex-direction: row;
+                    align-items: center;
+                    line-height: 20px;
+                    margin-bottom: 6px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #666;
+                    display: flex;
+
+                    span {
+                        display: block;
+
+                        &:last-child {
+                            background-color: #6255D8;
+                            border-radius: 4px;
+                            padding: 2px 6px;
+                            color: white;                         
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+
+    &-card {
+        box-shadow: 0 0 18px rgb(0, 0, 0, .12);
+        border-radius: 14px;
+        overflow: hidden;
+        border: none;
+
+        &__image {
+            overflow: hidden;
+            height: 348px;
+            width: 100%;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

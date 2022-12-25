@@ -8,11 +8,11 @@ import {
 	resetSoggiorno
 } from '../../store/dataBookingSlice'
 
-import { renderText } from '../../helper/renderText';
+import { renderText } from '../../helper/Helper';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Loading from '../../components/Loading'
+import Loading from '../../components/block/Loading'
 
 const BookingRoomList = ({ setNexButtonStatus }) => {
 
@@ -297,11 +297,8 @@ const BookingRoomList = ({ setNexButtonStatus }) => {
 						return (
 							<div className='booking__room-row no-flex' key={index}>
 								<h6>
-									<span dangerouslySetInnerHTML={
-										renderText(
-											'<i class="icon ion-man"></i>'.repeat(item.ospiti)
-										)
-									}>
+									<span>
+										{renderText('<i className="icon ion-man"></i>'.repeat(item.ospiti))}
 									</span>
 									{item.nome_tipologia}
 								</h6>
@@ -321,12 +318,7 @@ const BookingRoomList = ({ setNexButtonStatus }) => {
 														<div className='tariffe__row'>
 
 															<div className='tariffe__row-descrizione'>
-																<span dangerouslySetInnerHTML={
-																	renderText(
-																		tariffa[1].descrizione_uns['it'].replace(/\\/g, "")
-																	)
-																}>
-																</span>
+																{renderText(tariffa[1].descrizione_uns['it'].replace(/\\/g, ""))}
 															</div>
 															<div className="tariffe__row-seleziona">
 																<Select

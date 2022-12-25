@@ -1,0 +1,159 @@
+.error-404 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 9999999999999;
+  background-color: #fff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.error-404 .error-text {
+  position: relative;
+  font-size: 40px;
+  color: #eee;
+}
+
+.error-404 .error-text a {
+  color: #eee;
+}
+
+.error-404 .error-text a:hover {
+  color: #fff;
+}
+
+.error-404 .error-text > p {
+  letter-spacing: -1px;
+  font-weight: 200;
+  color: #444;
+  margin-bottom: 0;
+}
+
+.error-404 .error-text i {
+  margin-left: 10px;
+}
+
+.error-404 .error-text span {
+  position: relative;
+  background: #ef4824;
+  color: #fff;
+  font-size: 368%;
+  padding: 0 20px;
+  border-radius: 5px;
+  letter-spacing: -6px;
+  font-weight: 700;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0 0 40px 0;
+}
+
+.error-404 .error-text span:hover {
+  background: #d7401f;
+  color: #fff;
+  -webkit-animation: jelly 0.5s;
+  animation: jelly 0.5s;
+}
+
+.error-404 .error-text span:after {
+  bottom: -30px;
+  left: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #ef4824;
+  border-width: 16px;
+  margin-left: -16px;
+}
+
+@-webkit-keyframes jelly {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
+@keyframes jelly {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
+/* CSS Error Page Responsive */
+@media only screen and (max-width: 640px) {
+  .error-404 .error-text span {
+    font-size: 200%;
+  }
+  .error-404 .error-text a:hover {
+    color: #fff;
+  }
+}
+.error-404 .back:active {
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
+  background: #f53b3b;
+  color: #fff;
+}
+
+.error-404 .back:hover {
+  background: #4c4c4c;
+  color: #fff;
+}
+
+.error-404 .back {
+  text-decoration: none;
+  background: #5b5a5a;
+  color: #fff;
+  padding: 16px 22px;
+  letter-spacing: 0px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  border-radius: 3px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}/*# sourceMappingURL=style-404.css.map */

@@ -1,21 +1,31 @@
 import React from 'react'
-import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
+import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import { convertData, renderText } from '../../helper/Helper'
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const BlogCard = ({ titolo, testo, img_anteprima }) => {
+const BlogCard = ({ data: { titolo, testo, permalink, img_anteprima, inizio_pubblicazione } }) => {
+
+    // Recupero la lingua
+    const lang = useSelector(store => store.infoSlice.lang)
 
     return (
-        <Card className="my-2">
-            <CardImg alt="Card image cap" src={`${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima}`} style={{ height: 288 }} top width="100%" />
+        <Card className="blog-card my-4">
+            <div className='blog-card__image'>
+                <img src={`${process.env.REACT_APP_UPLOADS_URL}/${img_anteprima}`} alt={titolo} />
+            </div>
             <CardBody>
-                <CardTitle tag="h5">
-                    Card Title
-                </CardTitle>
+                <Link to={`/${lang}/blog/${permalink}`}>
+                    <CardTitle tag="h5">
+                        {titolo}
+                    </CardTitle>
+                </Link>
                 <CardText>
-                    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                    {renderText(testo.substr(0, 380) + ' [...]')}
                 </CardText>
                 <CardText>
                     <small className="text-muted">
-                        Last updated 3 mins ago
+                        {convertData(inizio_pubblicazione, 'dl dd mt')}
                     </small>
                 </CardText>
             </CardBody>

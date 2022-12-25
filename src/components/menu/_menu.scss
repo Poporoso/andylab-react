@@ -1,0 +1,356 @@
+@import '../../assets/sass/partials/variables';
+@import '../../assets/sass/mixings/mixings';
+
+.menu {
+    @include transition(.14s, all, ease-in-out);
+    border-bottom: 1px solid transparent;
+    background-color: $bg-menu;
+    z-index: 8;
+
+    &.scrolled {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
+        border-bottom-color: $border-menu-scroll;
+        background-color: $bg-menu-scroll;
+        position: fixed;
+
+        nav {
+            .menu-box {
+                li {
+                    span.empty,
+                    a {
+                        color: $base-color-100;
+
+                        &:after {
+                            border-top-color: $base-color-100;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .button-ev {
+        span.empty,
+        a {
+            margin: 1.3rem 0 0;
+            white-space: nowrap;
+        }
+    }
+
+    nav {
+        position: relative;
+        z-index: 8;
+
+        label,
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .menu-box {
+            padding: 0 22px 0 0;
+            text-align: right;
+            list-style: none;
+            margin: 0;
+
+            li {
+                display: block;
+                position: relative;
+
+                span.empty,
+                a {
+                    @include transition(.14s, all, linear);
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: #222A2F;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 13px;
+                    line-height: 1;
+                    padding: 20px;
+                    display: block;
+                }
+            }
+
+            > li {
+                display: inline-block;
+
+                &:hover {
+
+                    > span.empty,
+                    > a {
+                        color: $primary-color;
+
+                        &:after {
+                            border-top-color: $primary-color;
+                        }
+                    }
+                }
+
+                > span.empty,
+                > a {
+                    // padding: 38px 20px;
+                    padding: 21px 8px;
+                }
+            }  
+        }
+
+        .menu-box {
+
+            ul {
+                box-shadow: 2px 2px 11px rgba(0, 0, 0, .2);
+                @include transition(.14s, all, linear);
+                background-color: rgba($bg-sub-menu, .96);
+                position: absolute;
+                visibility: hidden;
+                min-width: 220px;
+                max-width: 280px;
+                text-align: left;
+                margin: 0;
+                padding: 0;
+                opacity: 0;
+                z-index: 1;
+                top: 100%;
+                right: 0;
+                left: 0;
+
+                span.empty,
+                a {
+                    color: $base-color-100;
+
+                    &:hover {
+                        background-color: $primary-color;
+                        color: $light-color;
+
+                        &:after {
+                            border-top-color: $light-color;
+                        }                        
+                    }                    
+                }
+
+                label + span.empty,
+                label + a {
+                    &:after {
+                        border-top-color: $base-color-100;
+                    }                    
+                }
+
+                ul {
+                    left: 100%;
+                    top: 0;
+                }
+            }
+
+            label + span.empty,
+            label + a {
+                padding-right: 28px;
+            }
+
+            ul {
+                label + span.empty,
+                label + a {
+                    &:after {
+                        margin-top: -3px;
+                        @include rotate(-90deg);
+                    }                    
+                }                
+            }
+
+            // * Se è presente un input 
+            // vuol dire che c'è un sub menu 
+            // e il tag A subisce una modifica 
+            label + span.empty,
+            label + a {
+
+                &:after {
+                    border-color: #222426 transparent transparent transparent;
+                    @include transition(.14s, all, linear);
+                    border-width: 4px 4px 0 4px;
+                    @include translateY(-50%);
+                    border-style: solid;
+                    position: absolute;
+                    right: 14px;
+                    content: '';
+                    top: 50%;
+                    height: 0;
+                    width: 0;
+                }
+            }
+
+            li {
+                &:hover {
+
+                    & > ul {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .hamburger {
+            display: none;
+            color: white;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+
+    .menu {
+
+        nav {
+            box-shadow: 0 16px 14px rgba(0, 0, 0, .11);
+            border-top: 1px solid #EEE;
+            background-color: white;
+            position: absolute;
+            z-index: 12;
+            left: 0;
+            right: 0;
+            top: 100%;
+
+            & > input[type="checkbox"]:checked + .menu-box {
+                border-bottom: 6px solid $primary-color;
+                background-color: $bg-menu-responsive;
+                padding: 14px 13px 14px 0;
+                position: absolute;
+                display: block;
+                top: 100%;
+                left: 0;
+                right: 0;
+            }
+
+            & > input[type="checkbox"]:checked + .menu-box {
+
+                &:after {
+                    background-color: rgba(0, 0, 0, .68);
+                    position: fixed;
+                    content: '';
+                    z-index: -1;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+
+            .menu-box {
+
+                input[type="checkbox"]:checked + ul {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+                ul {
+                    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+                    background-color: transparent;
+                    min-width: calc(100% - 18px);
+                    max-width: calc(100% - 18px);
+                    left: 0 !important;
+                    top: 0 !important;
+                    position: relative;
+                    margin-left: 18px;
+                    display: none;
+                    right: auto;
+                }
+
+                label {
+                    background-color: $label-bg-color;
+                    display: inline-block;
+                    position: absolute;
+                    text-align: center;
+                    color: $label-color;
+                    padding-top: 4px;
+                    font-size: 20px;
+                    cursor: pointer;
+                    height: 44px;
+                    content: '';
+                    width: 44px;
+                    z-index: 2;
+                    right: 0;
+                    top: 2px;
+                }
+
+                label + span.empty,
+                label + a {
+
+                    &:after {
+                        display: none;
+                    }
+
+                    &:before {
+                        border-bottom: 1px dashed $label-line;
+                        width: calc(100% - 48px);
+                        position: absolute;
+                        height: 1px;
+                        content: '';
+                        z-index: 0;
+                        right: 48px;
+                        left: 26px;
+                        top: 24px;
+                    }
+
+                    span {
+                        background-color: $bg-menu-responsive;
+                        display: inline-block;
+                        padding-right: 14px;
+                        position: relative;
+                        z-index: 2;
+                    }
+                }
+
+                li {
+                    text-align: left;
+                    display: block;
+
+                    span.empty,
+                    a {
+                        background-color: transparent!important;
+                        padding: 1rem 1.6rem;
+                        color: $base-color-100;
+                        display: block;
+
+                        &:hover {
+                            color: $primary-color!important;
+                        }
+                    }
+                }
+
+                input[type="checkbox"]:checked + ul {
+                    display: block;
+                }
+            }
+
+            .hamburger {
+                color: $light-color;
+                margin: 25px 16px 24px 0;
+                cursor: pointer;
+                font-size: 37px;
+                display: block;
+                line-height: 1;
+            }
+        }
+
+        &.scrolled {
+            position: absolute;
+
+            nav {
+                .menu-box {
+
+                    span.empty,
+                    a {
+                        color: $light-color;
+                    }
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+
+                .hamburger {
+                    color: $light-color;
+                }
+            }
+        }
+    }
+}

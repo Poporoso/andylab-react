@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from 'react'
-import { renderText } from '../../helper/renderText';
+import { renderText } from '../../helper/Helper';
 import Select from 'react-select';
 import { Badge, Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap'
 
@@ -30,8 +30,8 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
         if (tipoDiServizio !== undefined) {
             const tipoDiGiorno = tipoDiServizio[e.indexDay]
             if (tipoDiGiorno !== undefined) {
-                console.log('Recupero dati tipo del giorno salvato che ha come prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
-                console.log('Rimuovo il nuovo prezzo prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
+                // console.log('Recupero dati tipo del giorno salvato che ha come prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
+                // console.log('Rimuovo il nuovo prezzo prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
                 setPrezzoServizio(currentPrice => {
                     let newPrezzo = currentPrice.prezzo -= (tipoDiGiorno.prezzo * tipoDiGiorno.value)
                     return (
@@ -60,7 +60,7 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
     }
 
     const mostraLocalService = () => {
-        console.log('Stato tipo servizio: ', selectService)
+        // console.log('Stato tipo servizio: ', selectService)
     }
 
     // Carico le select
@@ -139,7 +139,7 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
         const tipoDiServizio = selectService[e.idService]
         if (tipoDiServizio !== undefined) {
 
-            console.log('Sono già presente')
+            // console.log('Sono già presente')
 
             // Se arrivo qui significa che la tipologia di tariffa è gia presente
             // Ora devo vedere se è resente la tariffa per aggiornare il prezzo
@@ -161,7 +161,7 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
                 //setPrezzoServizio(current => current += (e.prezzo * e.value))
             } else {
                 if (e.value !== tipoDiGiorno.value) {
-                    console.log('Recupero dati tipo del giorno salvato che ha come prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
+                    // console.log('Recupero dati tipo del giorno salvato che ha come prezzo: ', (tipoDiGiorno.prezzo * tipoDiGiorno.value))
                     // setPrezzoServizio(current => current -= (tipoDiGiorno.prezzo * tipoDiGiorno.value))
                     setPrezzoServizio(currentPrice => {
                         let newPrezzo = currentPrice.prezzo -= (tipoDiGiorno.prezzo * tipoDiGiorno.value)
@@ -173,7 +173,7 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
                         )
                     })
 
-                    console.log('Agiungo il nuovo prezzo prezzo: ', (e.prezzo * e.value))
+                    // console.log('Agiungo il nuovo prezzo prezzo: ', (e.prezzo * e.value))
                     // setPrezzoServizio(current => current += (e.prezzo * e.value))
                     setPrezzoServizio(currentPrice => {
                         let newPrezzo = currentPrice.prezzo += (e.prezzo * e.value)
@@ -187,7 +187,7 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
                 }
             }
         } else {
-            console.log('Non è presente, aggiungo il prezzo di: ', (e.prezzo * e.value))
+            // console.log('Non è presente, aggiungo il prezzo di: ', (e.prezzo * e.value))
             // setPrezzoServizio(current => current += (e.prezzo * e.value))
             setPrezzoServizio(currentPrice => {
                 let newPrezzo = currentPrice.prezzo += (e.prezzo * e.value)
@@ -250,7 +250,9 @@ const BookingCardService = ({ dataDay, dataService, setStore, aggiornaPrezzo }) 
                     Stato servizio locale
                 </button>
                 <p>Prezzo totale: {prezzoServizio.prezzo}</p>
-                <CardText dangerouslySetInnerHTML={renderText(dataService.testo.substr(0, 248))}></CardText>
+                <CardText>
+                    {renderText(dataService.testo.substr(0, 248))}
+                </CardText>
                 {
                     listDay.map((item, index) => {
                         return (

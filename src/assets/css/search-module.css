@@ -1,0 +1,24 @@
+.search-module {
+  background-color: #F9F9F9;
+  margin-bottom: 28px;
+  border-radius: 12px;
+  padding: 22px;
+}
+.search-module .form-control {
+  border-right: none;
+}
+.search-module .input-group-text {
+  background-color: white;
+  cursor: pointer;
+}
+.search-module .input-group-text:hover i {
+  opacity: 1;
+}
+.search-module .input-group-text i {
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  margin-right: -4px;
+  font-size: 26px;
+  line-height: 1;
+  opacity: 0.4;
+}/*# sourceMappingURL=search-module.css.map */

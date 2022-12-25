@@ -1,0 +1,25 @@
+
+.nav-menu {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
+    padding-bottom: 14px;
+    position: relative;
+    padding-top: 14px;
+    z-index: 10;
+
+    .header-menu {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        max-width: 1320px;
+        flex-wrap: nowrap;
+        display: flex;
+        margin: 0 auto;
+
+        &__logo {
+
+            img {
+                height: 56px
+            }
+        }
+    }
+}

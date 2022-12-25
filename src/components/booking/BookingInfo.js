@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import Select from 'react-select';
-import BookingFormRoom from './BookingFormRoom';
 import { useNavigate } from 'react-router-dom';
-import { nextStep, setInformazioniSoggiorno } from '../../store/dataBookingSlice';
+import Select from 'react-select';
+import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 
-import Loading from '../../components/Loading'
+import BookingFormRoom from './BookingFormRoom';
+import { nextStep, setInformazioniSoggiorno } from '../../store/dataBookingSlice';
+import Loading from '../../components/block/Loading'
 
 const BookingInfo = ({ setNexButtonStatus }) => {
 
@@ -150,9 +150,9 @@ const BookingInfo = ({ setNexButtonStatus }) => {
 
     // Mostro occupazione camere
     const mostraStatoGenerale = () => {
-        console.log('Stato generale: ', dataForm)
-        console.log('Stato info: ', infoForm)
-        console.log('Stato occupa: ', occupazioneCamere)
+        // console.log('Stato generale: ', dataForm)
+        // console.log('Stato info: ', infoForm)
+        // console.log('Stato occupa: ', occupazioneCamere)
     }
 
     useEffect(() => {

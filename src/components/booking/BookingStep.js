@@ -6,8 +6,6 @@ import infoIcon from '../../assets/images/info.svg'
 import anteprimaIcon from '../../assets/images/anteprima.svg'
 import promozioniIcon from '../../assets/images/promozioni.svg'
 
-import '../../assets/css/booking-step.css'
-
 const BookingStep = ({ step }) => {
 
     return (

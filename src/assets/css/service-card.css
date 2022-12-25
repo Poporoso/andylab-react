@@ -13,7 +13,7 @@
 .service-card:hover {
   -webkit-transform: 0;
           transform: 0;
-  background-color: hotpink;
+  background-color: #7467f0;
   color: white;
 }
 .service-card__icon {
@@ -21,4 +21,24 @@
 }
 .service-card__icon .icon {
   font-size: 48px;
+}
+
+.servizi-card {
+  -webkit-box-shadow: 0 0 22px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 0 22px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+}
+.servizi-card img {
+  border-radius: 18px 0 0 18px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 50%;
 }/*# sourceMappingURL=service-card.css.map */

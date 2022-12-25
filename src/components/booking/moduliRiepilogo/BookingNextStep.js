@@ -21,17 +21,17 @@ const BookingNextStep = ({ nextStep: { pathPage, updateStep, lang, nexButtonStat
         },
         'servizi': {
             step: 3,
-            apiUrl: `${lang}/booking/`,
+            apiUrl: ``,
             pathUrl: '../informazioni/'
         },
         'informazioni': {
             step: 4,
-            apiUrl: `${lang}/booking/`,
+            apiUrl: ``,
             pathUrl: '../riepilogo/'
         },
         'riepilogo': {
             step: 5,
-            apiUrl: `${lang}/booking/`,
+            apiUrl: ``,
             pathUrl: '/'
         }
     }
@@ -39,12 +39,14 @@ const BookingNextStep = ({ nextStep: { pathPage, updateStep, lang, nexButtonStat
     const stepSelected = stepList[pathPage]
 
     const handleNextStep = () => {
-        dispatch(
-            nextStep({
-                url: stepSelected.apiUrl,
-                dataJson: ''
-            })
-        )
+        if (stepSelected.apiUrl) {
+            dispatch(
+                nextStep({
+                    url: stepSelected.apiUrl,
+                    dataJson: ''
+                })
+            )
+        }
         navigate(`booking/${stepSelected.pathUrl}`)
     }
 

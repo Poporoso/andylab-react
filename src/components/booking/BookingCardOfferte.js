@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Card, CardBody } from 'reactstrap'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { renderText } from '../../helper/renderText';
-import convertData from '../../helper/convertData'
+import { convertData, renderText } from '../../helper/Helper'
 import { setPromozione, deletePromozione } from '../../store/dataBookingSlice'
 
 const BookingOfferte = ({ data }) => {
@@ -34,7 +33,9 @@ const BookingOfferte = ({ data }) => {
                 <img className="card-img-top img-fluid" src={`${process.env.REACT_APP_UPLOADS_URL}${img_anteprima}`} alt={titolo} />
                 <CardBody className="card-body">
                     <h4 className="card-title">{titolo}</h4>
-                    <p className="card-text" dangerouslySetInnerHTML={renderText(testo.substr(0, 148))}></p>
+                    <p className="card-text">
+                        {renderText(testo.substr(0, 148))}
+                    </p>
                     <p className="card-text">
                         <small className="text-muted">
                             Scadenza: {scadenza === '' ? 'Per ora non scade :)' : convertData(scadenza, 'dd ms aaaa')}
@@ -59,7 +60,9 @@ const BookingOfferte = ({ data }) => {
                     <img className="card-img-top img-fluid" src={`${process.env.REACT_APP_UPLOADS_URL}${img_anteprima}`} alt={titolo} />
                 </div>
                 <ModalHeader toggle={toggle}>{titolo}</ModalHeader>
-                <ModalBody dangerouslySetInnerHTML={renderText(testo)}></ModalBody>
+                <ModalBody>
+                    {renderText(testo)}
+                </ModalBody>
                 <ModalFooter>
                     {
                         promozione?.id === id ?

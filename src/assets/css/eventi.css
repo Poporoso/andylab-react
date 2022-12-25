@@ -1,0 +1,35 @@
+.dettagli-evento {
+  background-color: #F2F3F4;
+  border-radius: 14px;
+  color: #21323a;
+}
+.dettagli-evento .blocco-evento {
+  border-bottom: 1px dashed #D0DDE3;
+  padding: 12px 24px 18px;
+  border-radius: 18px;
+}
+.dettagli-evento .blocco-evento .titolo {
+  text-transform: uppercase;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  font-size: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dettagli-evento .blocco-evento .titolo h5 {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+.dettagli-evento .blocco-evento span {
+  display: block;
+  margin-left: 26px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}/*# sourceMappingURL=eventi.css.map */

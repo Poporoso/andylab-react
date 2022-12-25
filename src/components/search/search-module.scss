@@ -1,0 +1,32 @@
+
+
+.search-module {
+    background-color: #F9F9F9;
+    margin-bottom: 28px;
+    border-radius: 12px;
+    padding: 22px;
+
+    .form-control {
+        border-right: none;
+    }
+
+    .input-group-text {
+        background-color: white;
+        cursor: pointer;
+
+        &:hover {
+
+            i {
+                opacity: 1;
+            }
+        }
+
+        i {
+            transition: .3s all ease;
+            margin-right: -4px;
+            font-size: 26px;
+            line-height: 1;
+            opacity: .4;
+        }
+    }
+}

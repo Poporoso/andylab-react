@@ -4,7 +4,7 @@ import axios from 'axios'
 export const nextStep = createAsyncThunk('nextStep', async ({ url, dataJson }) => {
     if (url) {
         const { data } = await axios.post(
-            `${process.env.REACT_APP_DOMAIN_URL}/${url}`,
+            `${process.env.REACT_APP_API_DOMAIN_URL}/${url}`,
             dataJson,
             {
                 headers: {

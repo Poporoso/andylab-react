@@ -1,0 +1,32 @@
+.dettagli-evento {
+    background-color: #F2F3F4;
+    border-radius: 14px;
+    color: #21323a;
+
+    .blocco-evento {
+        border-bottom: 1px dashed #D0DDE3;
+        padding: 12px 24px 18px;
+        border-radius: 18px;
+
+        .titolo {
+            text-transform: uppercase;
+            align-items: center;
+            column-gap: 10px;
+            font-size: 24px;
+            display: flex;
+            h5 {
+                font-weight: 500;
+                font-size: 14px;
+                margin: 0;
+            }
+        }
+
+        span {
+            display: block;
+            margin-left: 26px;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+    }
+}

@@ -1,20 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { forwardRef, useEffect, useState } from 'react'
-// import { useContext } from 'react'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select';
-import { Container, Row, Col, Label, Button } from 'reactstrap';
+import { Label, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { nextStep } from '../../store/dataBookingSlice';
-// import { LoadingContext } from '../../App';
 
 import "react-datepicker/dist/react-datepicker.css";
-import '../../assets/css/booking-form.css'
 
 const BookingForm = () => {
-
-    // const loadingContext = useContext(LoadingContext);
 
     // Recupero la lingua
     const lang = useSelector(store => store.infoSlice.lang)
@@ -80,7 +74,6 @@ const BookingForm = () => {
         })
     }
     const handleSendBooking = () => {
-        // loadingContext.setLoading(true)
         dispatch(
             nextStep({
                 url: `${lang}/booking/room-list/`,
@@ -100,10 +93,6 @@ const BookingForm = () => {
         let bambini = numeroOspiti[0].value
 
         if (soggiorno.checkin) {
-            // let date_in = soggiorno.checkin.split('/')
-            // let date_out = soggiorno.checkout.split('/')
-            // dateIn = new Date(`${date_in[2]}/${date_in[1]}/${date_in[0]}`)
-            // dateOut = new Date(`${date_out[2]}/${date_out[1]}/${date_out[0]}`)
 
             dateIn = new Date(soggiorno.checkinJs)
             dateOut = new Date(soggiorno.checkoutJs)
@@ -121,42 +110,38 @@ const BookingForm = () => {
 
         setDataBooking(dataSoggiorno)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [soggiorno])
 
     return (
-        <section style={{ backgroundColor: '#F4F6F8' }}>
-            <Container>
-                <Row style={{ paddingTop: '60px', paddingBottom: '60px' }}>
-                    <Col>
-                        <Label>Seleziona date</Label>
-                        <DatePicker
-                            dateFormat="dd/MM/yyyy"
-                            selected={dataBooking.dateIn}
-                            minDate={new Date()}
-                            onChange={handleCambiaData}
-                            startDate={dataBooking.dateIn}
-                            endDate={dataBooking.dateOut}
-                            customInput={<ButtonSend />}
-                            selectsRange
-                        />
-                    </Col>
-                    <Col>
-                        <Label>Adulti</Label>
-                        <Select value={numeroOspiti[dataBooking.adulti]} options={numeroOspiti} onChange={(e) => handleCambiaAdulti(e.value)} />
-                    </Col>
-                    <Col>
-                        <Label>Bambini</Label>
-                        <Select value={numeroOspiti[dataBooking.bambini]} options={numeroOspiti} onChange={(e) => handleCambiaBambini(e.value)} />
-                    </Col>
-                    <Col>
-                        <Button color={'primary'} type="button" onClick={() => handleSendBooking()} disabled={sendButton}>
-                            Invia
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
+        <section className='form-block'>
+            <div className='form-block__data'>
+                <Label>Seleziona date</Label>
+                <DatePicker
+                    dateFormat="dd/MM/yyyy"
+                    selected={dataBooking.dateIn}
+                    minDate={new Date()}
+                    onChange={handleCambiaData}
+                    startDate={dataBooking.dateIn}
+                    endDate={dataBooking.dateOut}
+                    customInput={<ButtonSend />}
+                    selectsRange
+                />
+            </div>
+            <div className='form-block__ospiti'>
+                <Label>Adulti</Label>
+                <Select value={numeroOspiti[dataBooking.adulti]} options={numeroOspiti} onChange={(e) => handleCambiaAdulti(e.value)} />
+            </div>
+            <div className='form-block__ospiti'>
+                <Label>Bambini</Label>
+                <Select value={numeroOspiti[dataBooking.bambini]} options={numeroOspiti} onChange={(e) => handleCambiaBambini(e.value)} />
+            </div>
+            <div className='form-block__invia'>
+                <Button color={'primary'} type="button" onClick={() => handleSendBooking()} disabled={sendButton}>
+                    Invia
+                </Button>
+            </div>
         </section>
-
     )
 }
 

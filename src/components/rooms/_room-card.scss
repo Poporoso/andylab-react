@@ -1,0 +1,118 @@
+.room-block {
+    margin-bottom: 48px;
+
+    &__image {
+        margin: 18px 18px 0 -18px;
+        width: calc(100% + 36px);
+        border-radius: 18px;
+        overflow: hidden;
+        display: block;
+        height: 100%;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__info {
+        background-color: #FAFBFC;
+        border-radius: 18px;
+        padding: 22px;
+
+        p {
+            line-height: 1.4;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        h3 {
+            border-bottom: 2px dashed #E7B315;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            align-items: center;
+            flex-wrap: nowrap;
+            margin: 0 0 16px;
+            display: flex;
+
+            a {
+                justify-content: space-between;
+                text-decoration: none;
+                align-items: center;
+                flex-wrap: nowrap;
+                color: #444;
+                display: flex;
+            }
+
+            span {
+                color: #E7B315;
+                font-size: 22px;
+            }
+        }
+    }
+
+    &__details {
+        font-size: 16px;
+
+        ul {
+            list-style: none;
+            margin: 0 0 20px;
+            display: flex;
+            padding: 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            li {
+                align-items: center;
+                margin-bottom: 14px;
+                font-weight: 300;
+                font-size: 18px;
+                column-gap: 14px;
+                display: flex;
+                width: 33%;
+
+                img {
+                    width: 28px;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+ .mg-room-fecilities {
+     margin-bottom: 15px;
+ }
+
+ .mg-room-fecilities ul {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+ }
+
+ .mg-room-fecilities ul li {
+     font-size: 18px;
+     line-height: 28px;
+     padding-bottom: 5px;
+ }
+
+ .room-block-title {
+     margin-top: 0;
+     margin-bottom: 8px;
+     padding-bottom: 10px;
+     border-bottom: 1px solid #f2f2f2;
+ }
+
+ .room-block-title a {
+     color: #16262e;
+ }
+
+ .room-block-title span {
+     font-family: "Open Sans";
+     font-weight: 300;
+     color: #e7b315;
+     float: right;
+ }

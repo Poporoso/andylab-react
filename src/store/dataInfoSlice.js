@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 export const getApiInfo = createAsyncThunk('getApiInfo', async ({ url, lang }) => {
-    const { data } = await axios.get(`${process.env.REACT_APP_DOMAIN_URL}/${url}`)
+    const { data } = await axios.get(`${process.env.REACT_APP_API_DOMAIN_URL}/${url}`)
     return {
         data: data.resource,
         lang: lang

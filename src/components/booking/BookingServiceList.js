@@ -8,7 +8,7 @@ import {
 } from '../../store/dataBookingSlice'
 import { nextStep } from '../../store/dataBookingSlice';
 
-import Loading from '../../components/Loading'
+import Loading from '../../components/block/Loading'
 
 import { Col, Row } from 'reactstrap';
 
@@ -29,7 +29,7 @@ const BookingServiceList = () => {
     //const dispatch = useDispatch()
     const store = useSelector(state => state.dataBooking)
     const dataDay = store.soggiorno
-    const serviceList = store.data?.data_book?.data_service
+    const serviceList = store.data?.service_list
 
     const aggiornaPrezzo = (servizio) => {
         setPrezzoServizi((previousState) => {
@@ -68,10 +68,10 @@ const BookingServiceList = () => {
     }, [statoLocaleServizi, dispatch])
 
     const mostraLocalService = () => {
-        console.log('Stato locale servizi: ', statoLocaleServizi)
+        // console.log('Stato locale servizi: ', statoLocaleServizi)
     }
     const mostraGlobalService = () => {
-        console.log('Stato globale servizi: ', dataDay.servizi)
+        // console.log('Stato globale servizi: ', dataDay.servizi)
     }
 
     useEffect(() => {

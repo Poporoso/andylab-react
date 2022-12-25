@@ -1,0 +1,21 @@
+.manutenzione .error-image {
+  max-width: 720px;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+.manutenzione .error-image h1 {
+  font-size: 120px;
+  margin: 48px auto 20px;
+}
+.manutenzione .error-image .error-msg-container {
+  margin: 18px auto 30px auto;
+  text-align: center;
+  max-width: 800px;
+  width: 80%;
+}
+.manutenzione .error-image .error-msg-container h1 {
+  margin: auto auto 48px;
+  font-size: 56px;
+  max-width: 560px;
+}/*# sourceMappingURL=manutenzione.css.map */

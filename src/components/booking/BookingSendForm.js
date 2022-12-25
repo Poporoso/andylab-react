@@ -6,7 +6,7 @@ import API from '../../store/apiData'
 import { confirmAlert } from 'react-confirm-alert';
 import { nextStep } from '../../store/dataBookingSlice';
 
-import Loading from '../../components/Loading'
+import Loading from '../../components/block/Loading'
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -27,7 +27,7 @@ const BookingSendForm = () => {
     const sendForm = () => {
         setIsLoading(true)
         API.post(
-            `${lang}/send/booking/`,
+            `${lang}/booking/preventivo/`,
             store,
             {
                 headers: {
@@ -37,7 +37,6 @@ const BookingSendForm = () => {
         ).then((response) => {
             const redirectPage = response.data.resource.page_redirect
             navigate(`/${lang}/${redirectPage}`)
-
         })
     }
 

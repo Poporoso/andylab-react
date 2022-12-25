@@ -6,7 +6,7 @@ import { nextStep } from '../../store/dataBookingSlice';
 
 import BookingCardOfferte from './BookingCardOfferte'
 
-import Loading from '../../components/Loading'
+import Loading from '../../components/block/Loading'
 
 const BookingOfferte = () => {
 
@@ -28,7 +28,7 @@ const BookingOfferte = () => {
         }
     }, [listaOfferte])
 
-    window.onpopstate = () => {
+    window.onPopState = () => {
         dispatch(
             nextStep({
                 url: `${lang}/booking/room-list/`,
