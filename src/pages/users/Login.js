@@ -2,19 +2,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Alert, Button, Input, Label, Form, Container, Row, Col } from 'reactstrap'
 
+import { setUserConnect } from '../../store/userSlice'
+
 import { validateEmail } from '../../helper/Helper'
 import API from '../../store/apiData'
 
-import '../../assets/css/accesso.css'
 import imagePage from '../../assets/images/login.jpg'
 import IconaDivide from '../../assets/images/sign-up.png'
 
-const Login = ({ setIsProtected }) => {
+import '../../assets/css/accesso.css'
+import { useDispatch } from 'react-redux'
 
-    // Nascondo il menu richiamando la funzione da App.js
-    useEffect(() => {
-        // setIsProtected(true)
-    })
+const Login = ({ setIsProtected }) => {
 
     const [messaggioServer, setMessaggioServer] = useState({})
     const [userData, setUserData] = useState({
@@ -22,7 +21,8 @@ const Login = ({ setIsProtected }) => {
         password: ''
     })
 
-    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const usernameRef = useRef()
     const passwordRef = useRef()
@@ -77,7 +77,12 @@ const Login = ({ setIsProtected }) => {
                 return
             }
 
-            window.localStorage.setItem('tokenKey', user.data.token);
+            // Salvo dati sullo store
+            dispatch(
+                setUserConnect(JSON.stringify(user.data))
+            )
+
+            // API.defaults.headers.common["Content-Type"] = `application/json`
             API.defaults.headers.common["Authorization"] = `Bearer ${user.data.token}`
             navigate(`/${lang}/`)
         })
@@ -138,6 +143,8 @@ const Login = ({ setIsProtected }) => {
                                         <b>Registrati</b>
                                     </Link> o <Link to={`/${lang}/users/recovery/`}>
                                         <b>Recupera password</b>
+                                    </Link> o vai alla <Link to={`/${lang}/`}>
+                                        <b>Home</b>
                                     </Link>
                                 </p>
                             </Col>

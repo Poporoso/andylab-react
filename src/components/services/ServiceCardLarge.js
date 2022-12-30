@@ -13,7 +13,6 @@ const ServiceCardLarge = ({ data }) => {
     const image = `${process.env.REACT_APP_UPLOADS_URL}${img_anteprima}`
     const link = `/${lang}/servizi/${permalink}`
 
-
     return (
         <article className="box-card">
             <div className="box-card__img" style={{ backgroundImage: `url(${image})` }}></div>

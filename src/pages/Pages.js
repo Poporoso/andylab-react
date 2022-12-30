@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 
-import API, { callStoreApi } from '../store/apiData'
+import API from '../store/apiData'
 import Articolo from '../components/blog/Articolo.js'
 import HeaderPage from '../components/header/HeaderPage'
 import Loading from '../components/block/Loading'
@@ -28,19 +28,25 @@ const Pages = () => {
         const link = `/${lang}/${stringPage}`
 
         API.get(link).then((response) => {
+
             const status = response.data.status
+
             if (status === 404) {
                 navigate(`/${lang}/404/`)
             }
+
             if (status === 204) {
                 navigate(`/${lang}/manutenzione/`)
             }
+
             const protetta = response.data.resource.body.protected
             if (protetta) {
                 navigate(`/${lang}/users/login/`)
             }
+
             setDataPage(response.data.resource)
             setDataCall(response.data.data_call)
+
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

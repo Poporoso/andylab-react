@@ -1,22 +1,31 @@
 import React from 'react'
 import { renderText } from '../../helper/Helper';
+import { Link, useParams } from 'react-router-dom';
 
 import '../../assets/css/service-card.css'
 
 const ServiceCard = ({ data, icon }) => {
 
-    const { titolo, testo } = data
+    /** Parametri link */
+    const params = useParams()
+    const lang = params.lang
+
+    const titolo = renderText(data.titolo);
+    const testo = renderText(data.testo.substr(0, 88));
+    const link = `/${lang}/${data.permalink}`
 
     return (
-        <div className='service-card'>
+        <Link to={link} className='service-card'>
             <span className="service-card__icon">
                 <i className={`icon ${icon}`}></i>
             </span>
-            <h2 className="service-card__title">{titolo}</h2>
+            <h2 className="service-card__title">
+                {titolo}
+            </h2>
             <div className="service-card__text">
-                {renderText(testo.substr(0, 88))}
+                {testo}
             </div>
-        </div>
+        </Link>
     )
 }
 

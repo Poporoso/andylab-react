@@ -9,7 +9,7 @@ const BlockBlog = ({ data }) => {
             {
                 data.map((item) => {
                     return (
-                        <Col xxl={4} key={item.id_news}>
+                        <Col lg={4} key={item.id_news}>
                             <ArticleCard data={item} />
                         </Col>
                     )

@@ -10,7 +10,9 @@ const Maps = ({ data }) => {
     const info = useSelector(store => store.infoSlice)
     const googleSetting = info.data.setting?.google
 
-    const MapsKey = googleSetting ? googleSetting['maps-key'] : null
+
+    const mapsKey = googleSetting ? googleSetting['maps-key'] : null
+    console.log(info)
 
     const infoWidget = data.var
 
@@ -37,9 +39,9 @@ const Maps = ({ data }) => {
             <h2>{infoWidget?.titolo}</h2>
             {infoWidget?.descrizione && <p>{renderText(infoWidget.descrizione)}</p>}
             {
-                infoWidget && MapsKey &&
+                infoWidget && mapsKey &&
                 <LoadScript
-                    googleMapsApiKey={MapsKey}
+                    googleMapsApiKey={mapsKey}
                 >
                     <GoogleMap
                         mapContainerStyle={mapContainerStyle}
@@ -48,7 +50,7 @@ const Maps = ({ data }) => {
                     >
                         {
                             <Marker
-                                icon={"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"}
+                                icon={"https://andylab.it/marker-map.svg"}
                                 position={center}
                             />
                         }

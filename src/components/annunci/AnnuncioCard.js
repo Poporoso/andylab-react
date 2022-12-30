@@ -26,8 +26,8 @@ const AnnuncioCard = ({ data, lang }) => {
             <header>
                 <span className="header-info">
                     {
-                        info.img_ads &&
-                        <img src={`${process.env.REACT_APP_UPLOADS_URL}${info.img_ads}`} alt={info.titolo} />
+                        info.img_anteprima &&
+                        <img src={`${process.env.REACT_APP_UPLOADS_URL}${info.img_anteprima}`} alt={info.titolo} />
                     }
                     <span className="typology">
                         {info.tipo_scheda}
@@ -45,9 +45,9 @@ const AnnuncioCard = ({ data, lang }) => {
                 <Link to={`/${lang}/annunci/${info.permalink}`}>
                     <h1>{info.titolo}</h1>
                 </Link>
-                <p className="descrizione">
+                <div className="descrizione">
                     {info.descrizione}
-                </p>
+                </div>
                 <time pubdate="" dateTime="1970-01-01T01:00:00+01:00"></time>
             </header>
             <ul className="details">

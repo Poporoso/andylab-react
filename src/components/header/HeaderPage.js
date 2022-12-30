@@ -6,6 +6,7 @@ const HeaderPage = ({ options }) => {
     const { title, subTitle, urlImage = '' } = options
 
     return (
+        options &&
         <div className="sample-header" style={{ backgroundImage: `url("${process.env.REACT_APP_UPLOADS_URL}/${urlImage}")` }}>
             <div className="sample-header-section">
                 <h1>{renderText(title)}</h1>

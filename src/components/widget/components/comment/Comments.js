@@ -7,6 +7,8 @@ import { convertData, renderText, validateEmail } from '../../../../helper/Helpe
 import Loading from '../../../../components/block/Loading'
 import API from '../../../../store/apiData'
 
+import '../../../../assets/css/comments.css'
+
 const Comments = ({ data }) => {
 
     const captchaRef = useRef(null)

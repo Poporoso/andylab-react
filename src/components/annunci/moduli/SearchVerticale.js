@@ -491,11 +491,11 @@ const SearchVerticale = ({ sendSearch, data }) => {
                     <label>Tipo</label>
                     <Input
                         innerRef={tipoRef}
-                        defaultValue=""
+                        value={tipoRef}
                         type="select"
                         name="tipo"
                         onChange={(e) => handleSearch(e.target)}>
-                        <option value="" selected>Tutti i tipi</option>
+                        <option value="0" selected>Tutti i tipi</option>
                         {
                             tipo_list.map((item, index) => {
                                 return (
@@ -534,8 +534,14 @@ const SearchVerticale = ({ sendSearch, data }) => {
                     userSearch.tipo !== 3 &&
                     <Col xs={12}> { /* Tipologia */}
                         <label>Tipologia</label>
-                        <Input innerRef={tipologiaRef} type="select" name="tipologia" onChange={(e) => handleSearch(e.target)}>
-                            <option value="" selected>Tutte le tipologie</option>
+                        <Input
+                            value={tipologiaRef}
+                            innerRef={tipologiaRef}
+                            type="select"
+                            name="tipologia"
+                            onChange={(e) => handleSearch(e.target)}
+                        >
+                            <option value="0" selected>Tutte le tipologie</option>
                             {
                                 tipologie_list.map((item, index) => {
                                     return (
@@ -576,8 +582,14 @@ const SearchVerticale = ({ sendSearch, data }) => {
                 </Col>
                 <Col xs={12}> { /* Zona */}
                     <label>Zona</label>
-                    <Input innerRef={zonaRef} type="select" name="zona" onChange={(e) => handleSearch(e.target)}>
-                        <option value="" selected>Tutte le zone</option>
+                    <Input
+                        value={zonaRef}
+                        innerRef={zonaRef}
+                        type="select"
+                        name="zona"
+                        onChange={(e) => handleSearch(e.target)}
+                    >
+                        <option value="0" selected>Tutte le zone</option>
                         {
                             zone_list.map((item, index) => {
                                 return (
@@ -591,8 +603,14 @@ const SearchVerticale = ({ sendSearch, data }) => {
                 </Col>
                 <Col xs={12}> { /* Livello / Piano */}
                     <label>Livello</label>
-                    <Input innerRef={pianoRef} type="select" name="piano" onChange={(e) => handleSearch(e.target)}>
-                        <option value="" selected>Tutte i livelli</option>
+                    <Input
+                        value={pianoRef}
+                        innerRef={pianoRef}
+                        type="select"
+                        name="piano"
+                        onChange={(e) => handleSearch(e.target)}
+                    >
+                        <option value="0" selected>Tutte i livelli</option>
                         {
                             livello_list.map((item, index) => {
                                 return (
@@ -610,12 +628,12 @@ const SearchVerticale = ({ sendSearch, data }) => {
                         <Col xs={12}> { /* Clase energetica */}
                             <label>Classe Energetica</label>
                             <Input
-                                defaultValue=""
+                                value={ceRef}
                                 innerRef={ceRef}
                                 type="select"
                                 name="ce"
                                 onChange={(e) => handleSearch(e.target)}>
-                                <option value="" selected>Tutte le classi</option>
+                                <option value="0" selected>Tutte le classi</option>
                                 {
                                     ce &&
                                     ce.map((item, index) => {
@@ -629,12 +647,12 @@ const SearchVerticale = ({ sendSearch, data }) => {
                         <Col xs={12} lg={6}> { /* Bagni */}
                             <label>Bagni</label>
                             <Input
-                                defaultValue=""
+                                value={bagniRef}
                                 innerRef={bagniRef}
                                 type="select"
                                 name="bagni"
                                 onChange={(e) => handleSearch(e.target)}>
-                                <option value="" selected>-</option>
+                                <option value="0" selected>-</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -646,12 +664,12 @@ const SearchVerticale = ({ sendSearch, data }) => {
                         <Col xs={12} lg={6}> { /* Locali */}
                             <label>Locali</label>
                             <Input
-                                defaultValue=""
+                                value={localiRef}
                                 innerRef={localiRef}
                                 type="select"
                                 name="locali"
                                 onChange={(e) => handleSearch(e.target)}>
-                                <option value="" selected>-</option>
+                                <option value="0" selected>-</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

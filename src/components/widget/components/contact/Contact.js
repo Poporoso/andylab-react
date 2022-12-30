@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Form, Col, FormGroup, Input, Label, Alert } from 'reactstrap'
 import { validateEmail, renderText } from '../../../../helper/Helper'
 import Loading from '../../../block/Loading'

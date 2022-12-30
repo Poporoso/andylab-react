@@ -4,9 +4,11 @@
   -webkit-transition: 0.68s all ease;
   transition: 0.68s all ease;
   background-color: white;
+  text-decoration: none;
   border-radius: 14px;
   text-align: center;
   color: #646668;
+  display: block;
   cursor: pointer;
   padding: 28px;
 }

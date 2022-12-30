@@ -31,7 +31,7 @@ const OfferteCardLarge = ({ data }) => {
                         }
                     </div>
                     <div className="offerte-card-content-right">
-                        <h1>{titolo}</h1>
+                        <h1>{titolo}*</h1>
                         <div className="sch-author">
                             <i className='ion-android-contact'></i>
                             <span>{autore}</span>

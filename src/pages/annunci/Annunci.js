@@ -41,6 +41,19 @@ const Annunci = () => {
         setIsLoading(true)
         if (!search) {
             API.get(`/${lang}/annunci/`).then((response) => {
+
+                const status = response.data.status
+                if (status === 404) {
+                    navigate(`/${lang}/404/`)
+                }
+                if (status === 204) {
+                    navigate(`/${lang}/manutenzione/`)
+                }
+                const protetta = response.data.resource.body.protected
+                if (protetta) {
+                    navigate(`/${lang}/users/login/`)
+                }
+
                 setDataPage(response.data.resource)
                 setDataCall(response.data.data_call)
             })
@@ -76,7 +89,7 @@ const Annunci = () => {
                         <Row>
                             <Col>
                                 <h1>{dataPage?.body?.titolo}</h1>
-                                <p>{renderText(dataPage?.body?.testo)}</p>
+                                <div>{renderText(dataPage?.body?.testo)}</div>
                             </Col>
                         </Row>
                         <h2>Affitti</h2>

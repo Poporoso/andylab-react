@@ -12,11 +12,13 @@ import About from '../components/about/About';
 import Servizi from '../components/home/Servizi';
 import GalleryBlock from '../components/home/GalleryBlock';
 import Footer from '../components/footer/Footer';
+import NewsletterBox from '../components/newsletter/NewsletterBoxPopup';
 
 const Home = () => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [dataHome, setDataHome] = useState([])
+    const [dataCall, setDataCall] = useState(0)
 
     // Recupero la lingua
     const lang = useSelector(store => store.infoSlice.lang)
@@ -28,16 +30,21 @@ const Home = () => {
     const dataGallery = dataHome.resource?.gallery.data
 
     useEffect(() => {
-        API.get(`${lang}/`).then(response => {
-            setDataHome(response.data)
-        })
+        setIsLoading(true)
+        if (lang) {
+            API.get(`${lang}/`).then(response => {
+                setDataHome(response.data)
+                setDataCall(response.data.data_call)
+            })
+        }
     }, [lang])
 
     useEffect(() => {
-        if (dataHome.status) {
+        if (dataCall) {
             setIsLoading(false)
         }
-    }, [dataHome])
+        window.scrollTo(0, 0)
+    }, [dataCall, dataHome])
 
     return (
         <>
@@ -52,6 +59,8 @@ const Home = () => {
                     </Row>
                 </Container>
             </section>
+
+            <NewsletterBox />
 
             {dataAbout && <About data={dataAbout} />}
             {dataServizi && <Servizi data={dataServizi} />}

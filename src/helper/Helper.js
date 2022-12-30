@@ -18,7 +18,6 @@ export const renderText = (text) => {
     if (typeOf === 'object') {
         return (
             text.map((item) => {
-                typeof item === 'string' ? console.log('Sono un testo: ', item) : console.log('Sono un oggetto: ', item)
                 return (
                     typeof item === 'string'
                         ? formatHtmlText(item)

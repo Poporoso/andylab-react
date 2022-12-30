@@ -68,7 +68,7 @@ const Camere = () => {
                     sliderRoom.map((item, index) => {
                         return (
                             <SwiperSlide key={index}>
-                                <img src={`${process.env.REACT_APP_UPLOADS_URL}${item.path}/${item.nome}-large.${item.ext}`} alt={item.alt || item.nome_originale} />
+                                <img src={`${process.env.REACT_APP_UPLOADS_URL}${item.img_anteprima}`} alt={item.alt || item.nome_originale} />
                             </SwiperSlide>
                         )
                     })

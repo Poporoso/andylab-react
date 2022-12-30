@@ -1,0 +1,20 @@
+.breadcrumb {
+  margin: 0;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #424448;
+}
+.breadcrumb a:hover {
+  color: #6154D7;
+}
+.breadcrumb-item + .breadcrumb-item {
+  font-size: 15px;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  font-family: "Ionicons";
+  padding: 0 8px 0 3px;
+  content: "\f125";
+  line-height: 2.1;
+  font-size: 12px;
+}/*# sourceMappingURL=breadcrumbs.css.map */

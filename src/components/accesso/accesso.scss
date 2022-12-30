@@ -57,7 +57,8 @@
     }
 
     &__form {
-        background-color: rgba(248, 248, 248, 0.7882352941);
+        background-color: rgba(248, 248, 248, .4);
+        backdrop-filter: blur(6px);
         justify-content: center;
         flex-direction: column;
         position: relative;
@@ -99,8 +100,20 @@
             }       
         }
 
+        .form-control {
+            background-color: rgba(255, 255, 255, .48);
+            padding: 10px 16px;
+            font-weight: 300;
+            margin-top: 2px;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
         label {
             margin: 12px 0 0;
+            font-size: 15px;
             padding: 0;
         }
 

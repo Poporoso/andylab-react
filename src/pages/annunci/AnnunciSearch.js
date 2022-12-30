@@ -60,6 +60,19 @@ const Annunci = () => {
                 }
             }
         ).then((response) => {
+
+            const status = response.data.status
+            if (status === 404) {
+                navigate(`/${lang}/404/`)
+            }
+            if (status === 204) {
+                navigate(`/${lang}/manutenzione/`)
+            }
+            const protetta = response.data.resource.body.protected
+            if (protetta) {
+                navigate(`/${lang}/users/login/`)
+            }
+
             setDataPage(response.data.resource)
             setDataCall(response.data.data_call)
         })

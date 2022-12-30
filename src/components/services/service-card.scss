@@ -2,9 +2,11 @@
     box-shadow: 2px 2px 24px rgba(0, 0, 0, .12);
     transition: .68s all ease;
     background-color: white;
+    text-decoration: none;
     border-radius: 14px;
     text-align: center;
     color: #646668;
+    display: block;
     cursor: pointer;
     padding: 28px;
 
@@ -12,12 +14,6 @@
         transform: floor($number: 0);
         background-color: #7467f0;
         color: white;
-    }
-
-    &__title {}
-
-    &__text {
-
     }
 
     &__icon {

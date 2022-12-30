@@ -9,6 +9,7 @@ const BlogRecenti = ({ data }) => {
     const lang = useSelector(store => store.infoSlice.lang)
 
     const postRecenti = data
+    console.log('post recenti 2: ', postRecenti)
 
     return (
         <aside className="blog-module">

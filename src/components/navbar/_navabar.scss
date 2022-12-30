@@ -1,10 +1,23 @@
 
 .nav-menu {
     box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
+    background-color: white;
     padding-bottom: 14px;
     position: relative;
     padding-top: 14px;
+    width: 100%;
     z-index: 10;
+
+    &.hide {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &.sticky {
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
 
     .header-menu {
         justify-content: space-between;
@@ -20,6 +33,18 @@
             img {
                 height: 56px
             }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+
+    .header-menu {
+        padding-left: 18px;
+        padding-right: 18px;
+
+        &__lang {
+            padding-right: 58px;
         }
     }
 }

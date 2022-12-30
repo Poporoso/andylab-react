@@ -24,8 +24,6 @@ import AnnuncioDettaglio from './pages/annunci/AnnuncioDettaglio'
 
 import ServiziOfferteEventi from "./pages/ServiziOfferteEventi"
 import ServiziOfferteEventiSingola from "./pages/ServiziOfferteEventiSingola"
-// import EventoSingolo from './pages/______________________eventi/EventoSingolo';
-// import OffertaSingola from './pages/_______________offerte/OffertaSingola';
 
 /** Catalogo */
 import Catalogo from "./pages/catalogo/Catalogo"
@@ -55,17 +53,18 @@ const App = () => {
 	const data = store.infoSlice.data
 
 	useMemo(() => {
-		dispatch(
-			getApiInfo({
-				url: `${lang}/components/all/`,
-				lang: lang
-			})
-		)
+		if (lang) {
+			dispatch(
+				getApiInfo({
+					url: `${lang}/components/all/`,
+					lang: lang
+				})
+			)
+		}
 	}, [dispatch, lang])
 
 	return (
 		<>
-
 			<NavbarBlock data={data} />
 			<Routes>
 				<Route path={`:lang/`} element={<Home />} />
@@ -97,21 +96,15 @@ const App = () => {
 
 				<Route path={`:lang/eventi/`} element={<ServiziOfferteEventi type={`eventi`} />} />
 				<Route path={`:lang/eventi/:page/`} element={<ServiziOfferteEventi type={`eventi`} />} />
-				{/* <Route path={`:lang/eventi/search/:keyword/`} element={<ServiziOfferteEventi type={`eventi`} />} />
-				<Route path={`:lang/eventi/search/:keyword/:page/`} element={<ServiziOfferteEventi type={`eventi`} />} /> */}
 				<Route path={`:lang/eventi/:data/:title-:id/`} element={<ServiziOfferteEventiSingola type={`eventi`} />} />
 
 				<Route path={`:lang/offerte/`} element={<ServiziOfferteEventi type={`offerte`} />} />
 				<Route path={`:lang/offerte/:page/`} element={<ServiziOfferteEventi type={`offerte`} />} />
-				{/* <Route path={`:lang/offerte/search/:keyword/`} element={<ServiziOfferteEventi type={`offerte`} />} />
-				<Route path={`:lang/offerte/search/:keyword/:page/`} element={<ServiziOfferteEventi type={`offerte`} />} /> */}
 				<Route path={`:lang/offerte/:data/:title-:id/`} element={<ServiziOfferteEventiSingola type={`offerte`} />} />
 
 				<Route path={`:lang/servizi/`} element={<ServiziOfferteEventi type={`servizi`} />} />
 				<Route path={`:lang/servizi/:page/`} element={<ServiziOfferteEventi type={`servizi`} />} />
 				<Route path={`:lang/servizi/:data/:title-:id/`} element={<ServiziOfferteEventiSingola type={`servizi`} />} />
-				{/* <Route path={`:lang/servizi/search/:keyword/`} element={<ServiziOfferteEventi type={`servizi`} />} />
-				<Route path={`:lang/servizi/search/:keyword/:page/`} element={<ServiziOfferteEventi type={`servizi`} />} /> */}
 
 				{/**
 				 * 

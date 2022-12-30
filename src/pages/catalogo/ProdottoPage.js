@@ -8,7 +8,7 @@ import API from '../../store/apiData'
 import Footer from '../../components/footer/Footer'
 
 import '../../assets/css/pagina-prodotto.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ProdottoCard from '../../components/prodotti/ProdottoCard';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
@@ -17,6 +17,8 @@ const ProdottoPage = () => {
     const [dataPage, setDataPage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [dataCall, setDataCall] = useState(0)
+
+    const navigate = useNavigate();
 
     /** Parametri link */
     const params = useParams()
@@ -35,6 +37,19 @@ const ProdottoPage = () => {
         setIsLoading(true)
         const link = `/${lang}/catalogo/prodotti/scheda/${name}-${id}/`
         API.get(link).then((response) => {
+
+            const status = response.data.status
+            if (status === 404) {
+                navigate(`/${lang}/404/`)
+            }
+            if (status === 204) {
+                navigate(`/${lang}/manutenzione/`)
+            }
+            const protetta = response.data.resource.body.protected
+            if (protetta) {
+                navigate(`/${lang}/users/login/`)
+            }
+
             setDataPage(response.data.resource)
             setDataCall(response.data.data_call)
         })

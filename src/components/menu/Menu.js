@@ -1,26 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FiArrowDownRight } from "react-icons/fi";
 
-import { useEffect } from "react";
 import { useSelector } from 'react-redux';
 
 const Menu = ({ data }) => {
 
 	// Recupero la lingua
 	const lang = useSelector(store => store.infoSlice.lang)
-
-	//const [listCheck, setListCheck] = useState([])
-	/*
-		const handlerClickMenu = () => {
-			document.querySelectorAll('#sm-menu').checked = false
-			Object.keys(listCheck).map((el) => {
-				return (
-					listCheck[el].checked = false
-				)
-			})
-		}
-		*/
+	const [open, setOpen] = useState(false)
 
 	const menuList = data['menu-principale']
 
@@ -30,14 +17,14 @@ const Menu = ({ data }) => {
 			const subMenu = item[1]['sub-menu']
 			return (
 				<li key={id}>
-					{!subMenu || <label htmlFor={`sm${id}`}> <FiArrowDownRight /></label>}
+					{!subMenu || <label htmlFor={`sm${id}`}> <i className="ion-android-arrow-dropdown"></i></label>}
 					{
 						virtual ?
 							<span className='empty'>
 								<span>{nome}</span>
 							</span>
 							:
-							<Link to={`${lang}/${permalink}`}>
+							<Link to={`${lang}/${permalink}`} onClick={() => setOpen(false)}>
 								<span>{nome}</span>
 							</Link>
 					}
@@ -48,13 +35,12 @@ const Menu = ({ data }) => {
 		})
 	}
 
-	useEffect(() => {
-		//const checkBox = document.querySelectorAll('input')
-		//setListCheck(checkBox)
-	}, [])
+	const handleMenuOpen = () => {
+		setOpen(!open)
+	}
 
 	return (
-		<div className="menu">
+		<div className={`menu open-${open}`}>
 			<nav>
 				<ul className="menu-box">
 					<li>
@@ -63,6 +49,11 @@ const Menu = ({ data }) => {
 						</Link>
 					</li>
 					{renderMenu(menuList)}
+				</ul>
+				<ul className="hamburger" onClick={() => handleMenuOpen()}>
+					<li></li>
+					<li></li>
+					<li></li>
 				</ul>
 			</nav>
 		</div>

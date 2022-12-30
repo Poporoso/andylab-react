@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
 import API from '../../store/apiData'
 
@@ -21,6 +21,8 @@ const Blog = () => {
     const [dataPage, setDataPage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [dataCall, setDataCall] = useState(0)
+
+    const navigate = useNavigate();
 
     /** Parametri link */
     const params = useParams()
@@ -66,10 +68,24 @@ const Blog = () => {
         }
 
         API.get(link).then((response) => {
+
+            const status = response.data.status
+            if (status === 404) {
+                navigate(`/${lang}/404/`)
+            }
+            if (status === 204) {
+                navigate(`/${lang}/manutenzione/`)
+            }
+            const protetta = response.data.resource.body.protected
+            if (protetta) {
+                navigate(`/${lang}/users/login/`)
+            }
+
             setDataPage(response.data.resource)
             setDataCall(response.data.data_call)
         })
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang, blogPage, blogSection, blogKeyword])
 
     useEffect(() => {

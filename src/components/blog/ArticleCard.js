@@ -1,12 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom';
 import { convertData, renderText } from '../../helper/Helper'
 
 const ArticleCard = ({ data }) => {
 
+    /** Parametri link */
+    const params = useParams()
+    const lang = params.lang
+
     const { id_news, titolo, testo, img_anteprima, permalink, inizio_pubblicazione, tags_name, tags_link } = data
     const tagsName = tags_name.split(',')
     const tagsLink = tags_link.split(',')
+    const link = `/${lang}/blog/${permalink}`
 
     return (
         <div className="blog-item padd-15" id={`blog-n-${id_news}`}>
@@ -18,7 +23,7 @@ const ArticleCard = ({ data }) => {
                     </div>
                 </div>
                 <div className="blog-info">
-                    <Link to={`/${permalink}`}>
+                    <Link to={link}>
                         <h4 className="blog-title">{titolo}</h4>
                     </Link>
                     <div className="blog-description">
@@ -32,7 +37,7 @@ const ArticleCard = ({ data }) => {
                                 tagsName.slice(0, 3).map((item, index) => {
                                     return (
                                         <span key={index}>
-                                            <Link to={`${tagsLink[index]}`} style={{ marginLeft: '4px' }}>
+                                            <Link to={`blog/tags/${tagsLink[index]}/`} style={{ marginLeft: '4px' }}>
                                                 {item}
                                             </Link>,
                                         </span>

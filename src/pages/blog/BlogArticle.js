@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Container, Row, Col } from "reactstrap";
 
 import Loading from '../../components/block/Loading';
@@ -20,6 +20,8 @@ const BlogArticle = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [dataCall, setDataCall] = useState(0)
 
+    const navigate = useNavigate();
+
     const categorieList = article?.lista_categorie
     const recentiList = article?.post_plus
     const tagsList = article?.tags_news
@@ -35,9 +37,26 @@ const BlogArticle = () => {
 
         const link = `/${lang}/blog/${data}/${title}-${id}/`
         API.get(link).then((response) => {
+
+            const status = response.data.status
+            if (status === 404) {
+                navigate(`/${lang}/404/`)
+            }
+            if (status === 204) {
+                navigate(`/${lang}/manutenzione/`)
+            }
+            const protetta = response.data.resource.body.protected
+            if (protetta) {
+                navigate(`/${lang}/users/login/`)
+            }
+
+            console.log('response.data.resource: ', response.data.resource)
+
             setArticle(response.data.resource)
             setDataCall(response.data.data_call)
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang, data, title, id])
 
     useEffect(() => {
@@ -46,6 +65,8 @@ const BlogArticle = () => {
             setIsLoading(false)
         }
     }, [dataCall])
+
+    console.log('recentiList: ', recentiList);
 
     return (
         <>

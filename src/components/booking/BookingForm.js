@@ -19,10 +19,26 @@ const BookingForm = () => {
         </button>
     ));
 
+    /**
+     * 
+     * 
+     * 
+     * Seleziono le traduzioni */
+    /*
+        FORM_BOOKING_ADULTI
+        FORM_BOOKING_BAMBINI
+        FORM_BOOKING_NESSUNO
+        FORM_BOOKING_SELEZIONA_DATE
+        FORM_INVIA
+    */
+    const frasiList = useSelector(state => state.infoSlice.data.traduzioni);
+    const frasi = frasiList?.[lang]
+
+    /** Recupero info soggiorno */
     const soggiorno = useSelector(state => state.dataBooking.soggiorno);
 
     const numeroOspiti = [
-        { value: 0, label: 'Nessuno' },
+        { value: 0, label: frasi?.FORM_BOOKING_NESSUNO },
         { value: 1, label: '1' },
         { value: 2, label: '2' },
         { value: 3, label: '3' },
@@ -116,7 +132,7 @@ const BookingForm = () => {
     return (
         <section className='form-block'>
             <div className='form-block__data'>
-                <Label>Seleziona date</Label>
+                <Label>{frasi?.FORM_BOOKING_SELEZIONA_DATE}</Label>
                 <DatePicker
                     dateFormat="dd/MM/yyyy"
                     selected={dataBooking.dateIn}
@@ -129,16 +145,16 @@ const BookingForm = () => {
                 />
             </div>
             <div className='form-block__ospiti'>
-                <Label>Adulti</Label>
+                <Label>{frasi?.FORM_BOOKING_ADULTI}</Label>
                 <Select value={numeroOspiti[dataBooking.adulti]} options={numeroOspiti} onChange={(e) => handleCambiaAdulti(e.value)} />
             </div>
             <div className='form-block__ospiti'>
-                <Label>Bambini</Label>
+                <Label>{frasi?.FORM_BOOKING_BAMBINI}</Label>
                 <Select value={numeroOspiti[dataBooking.bambini]} options={numeroOspiti} onChange={(e) => handleCambiaBambini(e.value)} />
             </div>
             <div className='form-block__invia'>
                 <Button color={'primary'} type="button" onClick={() => handleSendBooking()} disabled={sendButton}>
-                    Invia
+                    {frasi?.FORM_INVIA}
                 </Button>
             </div>
         </section>

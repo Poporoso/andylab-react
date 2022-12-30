@@ -8,6 +8,7 @@ const Servizi = ({ data }) => {
     const icone = data.setting.icone
 
     return (
+        servizi &&
         <Container style={{ margin: '80px auto', padding: '80px 0', borderBottom: '1px solid #f6f6f6', borderTop: '1px solid #f6f6f6' }}>
             <Row>
                 {

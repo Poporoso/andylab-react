@@ -3,10 +3,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { renderText } from '../../../../helper/Helper'
 
+import '../../../../assets/css/slider.css'
+
 const Slider = ({ images, data, options }) => {
 
     const infoWidget = data?.var
-    const sliderList = images ? images : data.result.image_list
+    const sliderList = images ? images : data?.result.image_list
 
     return (
         sliderList &&
@@ -18,12 +20,12 @@ const Slider = ({ images, data, options }) => {
                     sliderList.map((item, index) => {
                         return (
                             <div key={index}>
-                                <img src={`${process.env.REACT_APP_UPLOADS_URL}${item.path}/${item.nome}-large.${item.ext}`} alt="alt" />
+                                <img src={`${process.env.REACT_APP_UPLOADS_URL}${item.img_preview_large}`} alt="alt" />
                                 {
                                     options?.descrizione &&
-                                    <p className="legend">
+                                    <div className="legend">
                                         {item.alt || item.descrizione || item.nome}
-                                    </p>
+                                    </div>
                                 }
                             </div>
                         )

@@ -7,7 +7,7 @@ import { Col, Container, Row } from 'reactstrap';
 import ProdottoCard from '../../components/prodotti/ProdottoCard';
 import Footer from '../../components/footer/Footer'
 import MenuCategorie from '../../components/prodotti/sidebar/MenuCategorie';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { renderText } from '../../helper/Helper.js'
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs'
 import Paginazione from '../../components/paginazione/Paginazione'
@@ -19,6 +19,8 @@ const CatalogoCategory = () => {
     const [dataPage, setDataPage] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const [dataCall, setDataCall] = useState(0)
+
+    const navigate = useNavigate();
 
     /** Parametri link */
     const params = useParams()
@@ -39,9 +41,24 @@ const CatalogoCategory = () => {
         const pageLink = page ? `${page}/` : ``
         const link = `/${lang}/catalogo/category/${category}/${pageLink}`
         API.get(link).then((response) => {
+
+            const status = response.data.status
+            if (status === 404) {
+                navigate(`/${lang}/404/`)
+            }
+            if (status === 204) {
+                navigate(`/${lang}/manutenzione/`)
+            }
+            const protetta = response.data.resource.body.protected
+            if (protetta) {
+                navigate(`/${lang}/users/login/`)
+            }
+
             setDataPage(response.data.resource)
             setDataCall(response.data.data_call)
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang, category, page])
 
     useEffect(() => {

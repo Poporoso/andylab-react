@@ -59,29 +59,3 @@ body.react-confirm-alert-body-element {
         }
     }
 }
-
-.breadcrumb {
-    margin: 0;
-
-    a {
-        text-decoration: none;
-        color: #424448;
-
-        &:hover {
-            color: #6154D7;
-        }
-    }
-
-    &-item + &-item {
-        font-size: 15px;
-
-        &::before {
-            font-family: "Ionicons";
-            padding: 0 8px 0 3px;
-            content: "\f125";
-            line-height: 2.1;
-            font-size: 12px;
-        }    
-    }
-}
-

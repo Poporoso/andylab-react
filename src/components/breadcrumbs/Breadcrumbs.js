@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap'
 
+import '../../assets/css/breadcrumbs.css'
+
 const Breadcrumbs = ({ data }) => {
 
     const breadcrumps = data

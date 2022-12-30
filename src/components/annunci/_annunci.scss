@@ -331,32 +331,30 @@
         position: relative;
 
         ul {
-            box-shadow: 2px 2px 18px rgba(0, 0, 0, .12);
-            border: 1px solid #CED4DA;
+            box-shadow: 2px 2px 18px rgb(0 0 0 / 12%);
+            border-radius: 0 0 8px 8px;
             background-color: white;
             position: absolute;
-            border-radius: 6px;
             list-style: none;
             margin: -1px 0 0;
-            padding: 4px;
+            overflow: hidden;
+            padding: 0;
             width: 100%;
             z-index: 1;
 
             li {
-                border-radius: 6px;
-                padding: 4px 8px;
+                padding: 10px 8px;
                 cursor: pointer;
-                margin: 4px;
 
                 &:not(.nr):hover {
-                    background-color: #7467F0;
+                    background-color: #8595A4;
                     color: white;
                 }
 
                 &.nr {
                     text-align: center;
                     font-weight: 300;
-                    color: #888;
+                    color: #8595A4;
                 }
             }
         }
